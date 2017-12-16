@@ -80,6 +80,7 @@ function load_new() {
   delete document.head.lastChild;
   document.getElementById('addon').parentNode.parentNode.removeChild(document.getElementById('addon').parentNode);
   document.onkeydown = null;
+  keybinder = null;
   top.hotlist = [
     "NOBODY",
     "Rune+Keeper",
