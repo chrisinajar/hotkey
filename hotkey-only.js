@@ -1645,17 +1645,17 @@ var fn = {
     }
   },
   Attack: () => { //Attacks with both weapons 65
-    if (top.Target !== "" || top.Target !== undefined) {
+    if (top.Target !== "") {
       gattack("attack");
     }
   },
   Cast: () => { //Cast with both spells 67
-    if (top.Target !== "" || top.Target !== undefined) {
+    if (top.Target !== "") {
       gattack("cast");
     }
   },
   Defend: () => { //Defends 68
-    if (top.Target !== "" || top.Target !== undefined) {
+    if (top.Target !== "") {
       gattack("defend");
     }
   },
