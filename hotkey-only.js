@@ -1504,7 +1504,6 @@ var chatbinder = document.getElementsByName('target')[2].addEventListener("keydo
 var keybinder = document.addEventListener("keydown", (event) => {
   if (document.getElementById('s_Response').innerHTML.indexOf('How many do you see?') < 0) {
     if (p.kb_enabled) { //keybindings Enabled
-      event.preventDefault();
       if (!p.Safety) { //safety off
         fn.Process(event.keyCode);
       } else if (p.Safety) { //safety on
@@ -1738,146 +1737,181 @@ var fn = {
     switch (x) {
       case 16:
         fn.Submit();
+        event.preventDefault();
         break;
 
       case 17:
         if (document.querySelector('input[name="ra"]:checked').value == 17) {
           fn.Quicky();
         }
+        event.preventDefault();
         break;
 
       case 37:
         fn.West();
+        event.preventDefault();
         break;
 
       case 38:
         fn.North();
+        event.preventDefault();
         break;
 
       case 39:
         fn.East();
+        event.preventDefault();
         break;
 
       case 40:
         fn.South();
+        event.preventDefault();
         break;
 
       case 46:
         setPercents();
+        event.preventDefault();
         break;
 
       case 65:
         fn.Attack();
+        event.preventDefault();
         break;
 
       case 66:
         fn.Beast();
+        event.preventDefault();
         break;
 
       case 67:
         fn.Cast();
+        event.preventDefault();
         break;
 
       case 68:
         fn.Defend();
+        event.preventDefault();
         break;
 
       case 69:
         fn.Equip();
+        event.preventDefault();
         break;
 
       case 70:
         fn.Fight();
+        event.preventDefault();
         break;
 
       case 73:
         fn.Tog_Time();
+        event.preventDefault();
         break;
 
       case 74:
         fn.Fold();
+        event.preventDefault();
         break;
 
       case 75:
         fn.SetQ();
+        event.preventDefault();
         break;
 
       case 76:
         fn.Teleport();
+        event.preventDefault();
         break;
 
       case 78:
         fn.NBeast();
+        event.preventDefault();
         break;
 
       case 80:
         fn.Poker();
+        event.preventDefault();
         break;
 
       case 81:
         rn.Revive();
+        event.preventDefault();
         break;
 
       case 82:
         setBank();
+        event.preventDefault();
         break;
 
       case 83:
         fn.Tog_Safety();
+        event.preventDefault();
         break;
 
       case 84:
         fn.Train();
+        event.preventDefault();
         break;
 
       case 85:
         makeShort();
+        event.preventDefault();
         break;
 
       case 86:
         fn.Battle();
+        event.preventDefault();
         break;
 
       case 88:
         fn.Destroy();
+        event.preventDefault();
         break;
 
       case 96:
         if (document.querySelector('input[name="ra"]:checked').value == 96) {
           fn.Quicky();
         }
+        event.preventDefault();
         break;
 
       case 119:
         burn();
+        event.preventDefault();
         break;
 
       case 186:
         fn.Reload();
+        event.preventDefault();
         break;
 
       case 191:
         log('New Help Page: <a target="_blank" href="http://rwkhelp.com/hotkeys.html">Help</a>');
+        event.preventDefault();
         break;
 
       case 192:
         genfull('chat', 'track', 'Shrine+Keeper');
+        event.preventDefault();
         break;
 
       case 219:
         fn.Up();
+        event.preventDefault();
         break;
 
       case 221:
         fn.Down();
+        event.preventDefault();
         break;
 
       case 220:
         fn.Hide();
+        event.preventDefault();
         break;
 
       case 222:
         list_enchantments();
+        event.preventDefault();
         break;
     }
   }
