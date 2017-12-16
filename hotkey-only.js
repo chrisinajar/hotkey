@@ -7,7 +7,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 8.1",
+  version: "Version: 8.2",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
