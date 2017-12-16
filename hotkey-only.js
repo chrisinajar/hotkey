@@ -81,6 +81,7 @@ function load_new() {
   document.getElementById('addon').parentNode.parentNode.removeChild(document.getElementById('addon').parentNode);
   document.onkeydown = null;
   keybinder = null;
+  chatbinder = null;
   top.hotlist = [
     "NOBODY",
     "Rune+Keeper",
@@ -1432,7 +1433,7 @@ function essences() {
   document.getElementById('s_Emerald').innerHTML = emerald;
 }
 
-document.getElementsByName('target')[2].addEventListener("keydown", function(event) {
+var chatbinder = document.getElementsByName('target')[2].addEventListener("keydown", function(event) {
   if (event.keyCode == 13) {
     let chat = document.getElementsByName('target')[2];
     if (chat.value.trim().toLowerCase().substring(0, 3) == "/dt") {
