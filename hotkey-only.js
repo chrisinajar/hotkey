@@ -80,8 +80,10 @@ function load_new() {
   delete document.head.lastChild;
   document.getElementById('addon').parentNode.parentNode.removeChild(document.getElementById('addon').parentNode);
   document.onkeydown = null;
-  keybinder = null;
-  chatbinder = null;
+  keybinder = removeEventListener("keydown", null);
+  chatbinder = removeEventListener("keydown", null);
+  chatmodder = clearInterval(chatmodder);
+  window.alert = null;
   top.hotlist = [
     "NOBODY",
     "Rune+Keeper",
@@ -108,7 +110,9 @@ function load_new() {
     document.head.appendChild(document.createElement('script'));
     document.head.lastChild.src = 'https://s3.amazonaws.com/rwk-assets/hotkey-only.js';
   }, 500);
-}(function() {
+}
+
+var mainLoad = (function() {
   document.getElementsByTagName('tbody')[1].innerHTML = `<tbody>
   <tr>
     <td width="0" height="0"><img border="0" src="../corner.jpg" width="10" height="10"></td>
@@ -398,27 +402,6 @@ function pm(thesubber) {
 var thinger = document.chat.target.addEventListener("click", function() {
   kb_toggle();
 })
-
-document.onkeydown = function(e) {
-  switch (e.keyCode) {
-    case 27:
-      if (p.kb_enabled === 1) {
-        p.kb_enabled = 0;
-        //addon.hidden = true;
-        document.getElementById('hotkey_status').innerHTML = "HOTKEYS DISABLED";
-        chat.target.focus();
-        //log("Hotkeys Disabled!");
-      } else {
-        p.kb_enabled = 1;
-        //addon.hidden = false;
-        chat.target.blur();
-        document.getElementById('hotkey_status').innerHTML = "HOTKEYS ENABLED";
-        //log("Hotkeys Enabled!");
-      }
-      break;
-  }
-}
-
 
 function getPercents() {
   let total = (parseInt(top.Str) + parseInt(top.Dex) + parseInt(top.Agi) + parseInt(top.Dur) + parseInt(top.Ntl) + parseInt(top.Cnc) + parseInt(top.Cnt));
@@ -1502,6 +1485,17 @@ var chatbinder = document.getElementsByName('target')[2].addEventListener("keydo
 }, false);
 
 var keybinder = document.addEventListener("keydown", (event) => {
+  if (event.keyCode === 27) {
+    if (p.kb_enabled === 1) {
+      p.kb_enabled = 0;
+      document.getElementById('hotkey_status').innerHTML = "HOTKEYS DISABLED";
+      chat.target.focus();
+    } else {
+      p.kb_enabled = 1;
+      chat.target.blur();
+      document.getElementById('hotkey_status').innerHTML = "HOTKEYS ENABLED";
+    }
+  }
   if (document.getElementById('s_Response').innerHTML.indexOf('How many do you see?') < 0) {
     if (p.kb_enabled) { //keybindings Enabled
       if (!p.Safety) { //safety off
