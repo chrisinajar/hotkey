@@ -7,7 +7,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 8.2",
+  version: "Version: 8.3",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
@@ -81,7 +81,6 @@ function load_new() {
   document.getElementById('addon').parentNode.parentNode.removeChild(document.getElementById('addon').parentNode);
   document.onkeydown = null;
   keybinder = removeEventListener("keydown", null);
-  chatbinder = removeEventListener("keydown", null);
   chatmodder = clearInterval(chatmodder);
   window.alert = null;
   top.hotlist = [
@@ -1416,74 +1415,6 @@ function essences() {
   document.getElementById('s_Emerald').innerHTML = emerald;
 }
 
-var chatbinder = document.getElementsByName('target')[2].addEventListener("keydown", function(event) {
-  if (event.keyCode == 13) {
-    let chat = document.getElementsByName('target')[2];
-    if (chat.value.trim().toLowerCase().substring(0, 3) == "/dt") {
-      event.preventDefault();
-      chat.value = "";
-      let king = document.getElementById("king");
-      let action = document.getElementsByName("action")[1];
-      let amount = document.getElementsByName("othera")[1];
-      let submit = document.getElementById("s_subbut2").childNodes[0];
-      let gold = parseInt(top.Gold, 10);
-      let reply = document.getElementById('s_Response');
-
-      if (gold >= 1000000000 && gold <= 1499999999) {
-        if (top.LocZ != "For") {
-          action.value = "food";
-          updateaction("food", king);
-          amount.value = (parseInt(top.Gold, 10) - 1000000000);
-          submit.click();
-          setTimeout(() => {
-            action.value = "settle";
-            updateaction("settle", king);
-            reply.innerHTML = "Trivial gold dumped";
-          }, 150);
-        } else {
-          action.value = "deposit";
-          updateaction("deposit", king);
-          amount.value = (parseInt(top.Gold, 10) - 1000000000);
-          submit.click();
-          setTimeout(() => {
-            action.value = "settle";
-            updateaction("settle", king);
-            reply.innerHTML = "Trivial gold dumped";
-          }, 150);
-        }
-      } else if (gold <= 499999999 && gold >= 999999) {
-        if (top.LocZ != "For") {
-          action.value = "food";
-          updateaction("food", king);
-          amount.value = parseInt(top.Gold, 10);
-          submit.click();
-          setTimeout(() => {
-            action.value = "settle";
-            updateaction("settle", king);
-            reply.innerHTML = "Trivial gold dumped";
-          }, 150);
-        } else {
-          action.value = "deposit";
-          updateaction("deposit", king);
-          amount.value = parseInt(top.Gold, 10);
-          submit.click();
-          setTimeout(() => {
-            action.value = "settle";
-            updateaction("settle", king);
-            reply.innerHTML = "Trivial gold dumped";
-          }, 150);
-        }
-      } else {
-        reply.innerHTML = "Non trivial gold amount.";
-      }
-    } else if (chat.value.trim().toLowerCase().substring(0, 3) == "/kd") {
-      event.preventDefault();
-      chat.value = "";
-      Toggle_Trivial();
-    }
-  }
-}, false);
-
 var keybinder = document.addEventListener("keydown", (event) => {
   if (event.keyCode === 27) {
     if (p.kb_enabled === 1) {
@@ -1494,6 +1425,14 @@ var keybinder = document.addEventListener("keydown", (event) => {
       p.kb_enabled = 1;
       chat.target.blur();
       document.getElementById('hotkey_status').innerHTML = "HOTKEYS ENABLED";
+    }
+  }
+  if (event.keyCode == 13) {
+    let chat = document.getElementsByName('target')[2];
+    if (chat.value.trim().toLowerCase().substring(0, 3) == "/kd") {
+      event.preventDefault();
+      chat.value = "";
+      Toggle_Trivial();
     }
   }
   if (document.getElementById('s_Response').innerHTML.indexOf('How many do you see?') < 0) {
@@ -1519,6 +1458,64 @@ var keybinder = document.addEventListener("keydown", (event) => {
     //console.log("SECURITY CHECK");
   }
 });
+
+function trivial_Gold() {
+  chat.value = "";
+  let king = document.getElementById("king");
+  let action = document.getElementsByName("action")[1];
+  let amount = document.getElementsByName("othera")[1];
+  let submit = document.getElementById("s_subbut2").childNodes[0];
+  let gold = parseInt(top.Gold, 10);
+  let reply = document.getElementById('s_Response');
+
+  if (gold >= 1000000000 && gold <= 1499999999) {
+    if (top.LocZ != "For") {
+      action.value = "food";
+      updateaction("food", king);
+      amount.value = (parseInt(top.Gold, 10) - 1000000000);
+      submit.click();
+      setTimeout(() => {
+        action.value = "settle";
+        updateaction("settle", king);
+        reply.innerHTML = "Trivial gold dumped";
+      }, 150);
+    } else {
+      action.value = "deposit";
+      updateaction("deposit", king);
+      amount.value = (parseInt(top.Gold, 10) - 1000000000);
+      submit.click();
+      setTimeout(() => {
+        action.value = "settle";
+        updateaction("settle", king);
+        reply.innerHTML = "Trivial gold dumped";
+      }, 150);
+    }
+  } else if (gold <= 499999999 && gold >= 999999) {
+    if (top.LocZ != "For") {
+      action.value = "food";
+      updateaction("food", king);
+      amount.value = parseInt(top.Gold, 10);
+      submit.click();
+      setTimeout(() => {
+        action.value = "settle";
+        updateaction("settle", king);
+        reply.innerHTML = "Trivial gold dumped";
+      }, 150);
+    } else {
+      action.value = "deposit";
+      updateaction("deposit", king);
+      amount.value = parseInt(top.Gold, 10);
+      submit.click();
+      setTimeout(() => {
+        action.value = "settle";
+        updateaction("settle", king);
+        reply.innerHTML = "Trivial gold dumped";
+      }, 150);
+    }
+  } else {
+    reply.innerHTML = "Non trivial gold amount.";
+  }
+}
 
 var fn = {
   //Setting Selectors
