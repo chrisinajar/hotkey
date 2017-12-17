@@ -1432,7 +1432,7 @@ var keybinder = document.addEventListener("keydown", (event) => {
     if (chat.value.trim().toLowerCase().substring(0, 3) == "/kd") {
       event.preventDefault();
       chat.value = "";
-      Toggle_Trivial();
+      fn.Trivial();
     }
   }
   if (document.getElementById('s_Response').innerHTML.indexOf('How many do you see?') < 0) {
