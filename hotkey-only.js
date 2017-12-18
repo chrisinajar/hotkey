@@ -20,7 +20,7 @@ var p = {
   ],
   current_inventory: [],
   current_inventory_length: 0,
-  max_inventory: 50,
+  max_inventory: 50
 };
 
 var main = (() => {
@@ -1734,8 +1734,8 @@ var fn = {
       case 17:
         if (document.querySelector('input[name="ra"]:checked').value == 17) {
           fn.Quicky();
+          event.preventDefault();
         }
-        event.preventDefault();
         break;
 
       case 37:
@@ -1861,8 +1861,8 @@ var fn = {
       case 96:
         if (document.querySelector('input[name="ra"]:checked').value == 96) {
           fn.Quicky();
+          event.preventDefault();
         }
-        event.preventDefault();
         break;
 
       case 119:
