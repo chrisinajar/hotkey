@@ -1635,18 +1635,18 @@ var fn = {
     }
   },
   Attack: () => { //Attacks with both weapons 65
-    if (top.Target !== "" || top.Target != -1) {
+    if (top.Target !== "" && top.Target !== -1) {
       gattack("attack");
     }
   },
   Cast: () => { //Cast with both spells 67
-    if (top.Target !== "" || top.Target != -1) {
+    if (top.Target !== "" && top.Target !== -1) {
       gattack("cast");
     }
   },
   Defend: () => { //Defends 68
-    if (top.Target !== "") {
-      gattack("defend" || top.Target != -1);
+    if (top.Target !== "" && top.Target !== -1) {
+      gattack("defend");
     }
   },
   Revive: () => { //Revives 82
