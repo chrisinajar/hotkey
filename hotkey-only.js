@@ -54,7 +54,6 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = msg.replace(/:kalemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
         upchat("");
       }
-
     }
   }
 }, 500);
