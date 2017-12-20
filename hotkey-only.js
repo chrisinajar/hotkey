@@ -50,6 +50,10 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
         upchat("");
       }
+      if (msg.toLowerCase().indexOf(":kalemoon:") > -1) {
+        top.OldChat[x] = msg.replace(/:kalemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
+        upchat("");
+      }
 
     }
   }
