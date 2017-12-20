@@ -43,9 +43,14 @@ var chatmodder = setInterval(() => {
     if (top.OldChat[x] != "") {
       let msg = top.OldChat[x];
       if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
-        top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="https://i.imgur.com/skHiT8d.jpg">');
+        top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
         upchat("");
       }
+      if (msg.toLowerCase().indexOf(":calemoon:") > -1) {
+        top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
+        upchat("");
+      }
+
     }
   }
 }, 500);
@@ -79,8 +84,7 @@ function setBank() {
 function load_new() {
   delete document.head.lastChild;
   document.getElementById('addon').parentNode.parentNode.removeChild(document.getElementById('addon').parentNode);
-  document.onkeydown = null;
-  keybinder = removeEventListener("keydown", null);
+  keybinder = removeEventListener("keydown", (event)=>{}, false);
   chatmodder = clearInterval(chatmodder);
   window.alert = null;
   top.hotlist = [
