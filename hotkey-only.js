@@ -43,23 +43,20 @@ var chatmodder = setInterval(() => {
     if (top.OldChat[x] != "") {
       let msg = top.OldChat[x];
       if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
-        top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
+        top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg" title=":corymoon:">');
         upchat("");
       }
-      if (msg.toLowerCase().indexOf(":calemoon:") > -1) {
-        top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":kalemoon:") > -1) {
-        top.OldChat[x] = msg.replace(/:kalemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
+      if (msg.toLowerCase().indexOf(":calemoon:") > -1 || msg.toLowerCase().indexOf(":kalemoon:") > -1) {
+        top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png" title=":calemoon:">');
+        top.OldChat[x] = msg.replace(/:kalemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png" title=":kalemoon:">');
         upchat("");
       }
       if (msg.toLowerCase().indexOf(":hadoken:") > -1) {
-        top.OldChat[x] = msg.replace(/:hadoken:/gi, '<img width="32px" height="32px" src="https://media.giphy.com/media/4BiS1va7mm2ha/giphy.gif">');
+        top.OldChat[x] = msg.replace(/:hadoken:/gi, '<img width="32px" height="32px" src="https://media.giphy.com/media/4BiS1va7mm2ha/giphy.gif" title=":hadoken:">');
         upchat("");
       }
       if (msg.toLowerCase().indexOf(":adumb:") > -1) {
-        top.OldChat[x] = msg.replace(/:adumb:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg">');
+        top.OldChat[x] = msg.replace(/:adumb:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg" title=":adumb:">');
         upchat("");
       }
     }
