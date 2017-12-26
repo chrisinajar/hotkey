@@ -20,7 +20,7 @@ var p = {
   ],
   current_inventory: [],
   current_inventory_length: 0,
-  max_inventory: 50,
+  max_inventory: 50
 };
 
 var main = (() => {
@@ -43,7 +43,23 @@ var chatmodder = setInterval(() => {
     if (top.OldChat[x] != "") {
       let msg = top.OldChat[x];
       if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
-        top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="https://i.imgur.com/skHiT8d.jpg">');
+        top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":calemoon:") > -1) {
+        top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":kalemoon:") > -1) {
+        top.OldChat[x] = msg.replace(/:kalemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":hadoken:") > -1) {
+        top.OldChat[x] = msg.replace(/:hadoken:/gi, '<img width="32px" height="32px" src="https://imgur.com/Ds160kg.gif">');
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":adumb:") > -1) {
+        top.OldChat[x] = msg.replace(/:adumb:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg">');
         upchat("");
       }
     }
@@ -79,8 +95,7 @@ function setBank() {
 function load_new() {
   delete document.head.lastChild;
   document.getElementById('addon').parentNode.parentNode.removeChild(document.getElementById('addon').parentNode);
-  document.onkeydown = null;
-  keybinder = removeEventListener("keydown", null);
+  keybinder = removeEventListener("keydown", (event)=>{}, false);
   chatmodder = clearInterval(chatmodder);
   window.alert = null;
   top.hotlist = [
@@ -1636,17 +1651,17 @@ var fn = {
     }
   },
   Attack: () => { //Attacks with both weapons 65
-    if (top.Target !== "") {
+    if (top.Target !== "" && top.Target !== -1) {
       gattack("attack");
     }
   },
   Cast: () => { //Cast with both spells 67
-    if (top.Target !== "") {
+    if (top.Target !== "" && top.Target !== -1) {
       gattack("cast");
     }
   },
   Defend: () => { //Defends 68
-    if (top.Target !== "") {
+    if (top.Target !== "" && top.Target !== -1) {
       gattack("defend");
     }
   },
@@ -1735,8 +1750,8 @@ var fn = {
       case 17:
         if (document.querySelector('input[name="ra"]:checked').value == 17) {
           fn.Quicky();
+          event.preventDefault();
         }
-        event.preventDefault();
         break;
 
       case 37:
@@ -1862,8 +1877,8 @@ var fn = {
       case 96:
         if (document.querySelector('input[name="ra"]:checked').value == 96) {
           fn.Quicky();
+          event.preventDefault();
         }
-        event.preventDefault();
         break;
 
       case 119:
