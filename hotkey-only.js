@@ -317,6 +317,7 @@ var mainLoad = (function() {
 </td>`;
 
   document.getElementsByTagName('table')[0].childNodes[0].childNodes[2].innerHTML = xlr;
+  chat.target.focus();
 })();
 
 function randomValue(min, max) {
