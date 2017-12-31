@@ -1,7 +1,5 @@
 'use strict'
 
-top.hio = "";
-
 var p = {
   kb_enabled: 0,
   is_hidden: false,
@@ -1245,29 +1243,17 @@ function upbuttons() {
 
       if ((dur > dex + str) && (dur > cnt + agi) && (dur > dex + cnc) && (dur > cnc + ntl) && top.Heal != -1) {
         pclass = "vampire";
-      }
-
-      if ((dex + str > dur) && (dex + str > cnc + dex) && (dex + str > cnc + ntl) && (dex + str > dur + cnc) && (dex + str > agi + cnt)) {
+      } else if ((dex + str > dur) && (dex + str > cnc + dex) && (dex + str > cnc + ntl) && (dex + str > dur + cnc) && (dex + str > agi + cnt)) {
         pclass = "fighter";
-      }
-
-      if (top.Weapon == -1 && top.Shield == -1) {
+      } else if (top.Weapon == -1 && top.Shield == -1) {
         pclass = "monk";
-      }
-
-      if ((dex + cnc > dur) && (dex + cnc > cnc + ntl) && (dex + cnc > dex + str) && (dex + cnc > ntl + cnc) && (dex + cnc > dur + cnc)) {
+      } else if ((dex + cnc > dur) && (dex + cnc > cnc + ntl) && (dex + cnc > dex + str) && (dex + cnc > ntl + cnc) && (dex + cnc > dur + cnc)) {
         pclass = "archer";
-      }
-
-      if ((ntl + cnc > dur) && (ntl + cnc > dex + cnc) && (ntl + cnc > dex + str) && (ntl + cnc > cnt + agi) && (ntl + cnc > dur + cnc)) {
+      } else if ((ntl + cnc > dur) && (ntl + cnc > dex + cnc) && (ntl + cnc > dex + str) && (ntl + cnc > cnt + agi) && (ntl + cnc > dur + cnc)) {
         pclass = "caster";
-      }
-
-      if (top.Heal == -1 && ((dur > str) && (dur > agi) && (dur > ntl))) {
+      } else if (top.Heal == -1 && ((dur > str) && (dur > agi) && (dur > ntl))) {
         pclass = "theurgist";
-      }
-
-      if (parseInt(top.Weapon, 10) % 12000 >= 0 && parseInt(top.Weapon, 10) % 12000 <= 82 || parseInt(top.Shield, 10) % 12000 >= 0 && parseInt(top.Shield, 10) % 12000 <= 82) {
+      } else if (parseInt(top.Weapon, 10) % 12000 >= 0 && parseInt(top.Weapon, 10) % 12000 <= 82 || parseInt(top.Shield, 10) % 12000 >= 0 && parseInt(top.Shield, 10) % 12000 <= 82) {
         pclass = "archer";
       }
       break;
@@ -1290,66 +1276,71 @@ function upbuttons() {
   }
 
   if (top.Exp >= 100) {
-    tempstr += "<a href='javascript:level(0)'><img ";
-    if (top.HotLevel == 1)
-      tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='../ButStr.jpg'></a> ";
-    tempstr += "<a href='javascript:level(1)'><img ";
-    if (top.HotLevel == 2)
-      tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='../ButDex.jpg'></a> ";
-    tempstr += "<a href='javascript:level(2)'><img ";
-    if (top.HotLevel == 3)
-      tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='../ButAgi.jpg'></a> ";
-    tempstr += "<a href='javascript:level(3)'><img ";
-    if (top.HotLevel == 4)
-      tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='../ButDur.jpg'></a> ";
-    tempstr += "<a href='javascript:level(4)'><img ";
-    if (top.HotLevel == 5)
-      tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='../ButNtl.jpg'></a> ";
-    tempstr += "<a href='javascript:level(5)'><img ";
-    if (top.HotLevel == 6)
-      tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='../ButCnc.jpg'></a> ";
-    tempstr += "<a href='javascript:level(6)'><img ";
-    if (top.HotLevel == 7)
-      tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='../ButCnt.jpg'></a> ";
-    tempstr += "<a href='javascript:level(7)'><img ";
-    if (top.HotLevel == 8)
-      tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='../ButAll.jpg'></a>";
+    tempstr += "<img onmousedown=level(0) " + top.hio;
+    if (top.HotLevel == 1) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButStr.jpg'> ";
+    tempstr += "<img onmousedown=level(1) " + top.hio;
+    if (top.HotLevel == 2) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButDex.jpg'> ";
+    tempstr += "<img onmousedown=level(2) " + top.hio;
+    if (top.HotLevel == 3) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButAgi.jpg'> ";
+    tempstr += "<img onmousedown=level(3) " + top.hio;
+    if (top.HotLevel == 4) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButDur.jpg'> ";
+    tempstr += "<img onmousedown=level(4) " + top.hio;
+    if (top.HotLevel == 5) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButNtl.jpg'> ";
+    tempstr += "<img onmousedown=level(5) " + top.hio;
+    if (top.HotLevel == 6) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButCnc.jpg'> ";
+    tempstr += "<img onmousedown=level(6) " + top.hio;
+    if (top.HotLevel == 7) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButCnt.jpg'> ";
+    tempstr += "<img onmousedown=level(7) " + top.hio;
+    if (top.HotLevel == 8) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButAll.jpg'>";
     yes = 1;
   }
   if (top.Health <= 0) {
-    if (yes)
-      tempstr += "<br>";
+    if (yes) tempstr += "<br>";
     yes = 1;
-    tempstr += "<a href='javascript:revive()'><img border=0 src='../ButRevive.jpg'></a>";
+    tempstr += "<img onmousedown=revive() " + top.hio + "border=0 src='" + top.y + "ButRevive.jpg'>";
   }
 
-  check_Cards();
-
   if (top.Target != -1) {
-    if (yes)
-      tempstr += "<br>";
-    tempstr += "<a href='javascript:gattack(\"attack\")'><img ";
+    if (yes) tempstr += "<br>";
+    yes = 1;
+    tempstr += "<img onmousedown=gattack(\"attack\")";
     if (pclass == "fighter" || pclass == "monk" || pclass == "archer") {
-      tempstr += "width=60 height=40 ";
+      tempstr += " width=60 height=40 ";
     }
-    tempstr += "border=0 src='../ButAttack.jpg' title='Attack With Both Weapons'></a> <a href='javascript:gattack(\"cast\")'><img "
+    tempstr += "border=0" + top.hio + "src='" + top.y + "ButAttack.jpg' title='Attack With Both Weapons'> <img onmousedown=gattack(\"cast\") ";
     if (pclass == "caster" || pclass == "theurgist") {
       tempstr += "width=60 height=40 ";
     }
-    tempstr += "border=0 src='../ButCast.jpg' title='Cast With Both Spells'></a> <a href='javascript:gattack(\"lattack\")'><img border=0 src='../ButHybrid1.jpg' title='Left Weapon and Spell'></a> <a href='javascript:gattack(\"rattack\")'><img border=0 src='../ButHybrid2.jpg' title='Right Weapon and Spell'></a> <a href='javascript:gattack(\"defend\")'><img "
-    if (pclass == "vampire") {
+    tempstr += "border=0" + top.hio + "src='" + top.y + "ButCast.jpg' title='Cast With Both Spells'> <img onmousedown=gattack(\"lattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid1.jpg' title='Left Weapon and Spell'> <img onmousedown=gattack(\"rattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid2.jpg' title='Right Weapon and Spell'> <img onmousedown=gattack(\"defend\")";
+    if (pclass == "vampire"){
       tempstr += "width=60 height=40 ";
     }
-    tempstr += "border=0 src='../ButDefend.jpg' title='Defend'></a>";
-    tempstr += " <img border=0 src='../ButVs.jpg'> <a href=javascript:pm('" + mp(top.Target) + "')>" + getcreature(top.Target) + "</a>";
+    tempstr += "border=0" + top.hio + "src='" + top.y + "ButDefend.jpg' title='Defend'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    if (top.RJ)
+      tempstr += "<img onmousedown=gattack(\"rjack\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card24.gif'> ";
+    if (top.BJ)
+      tempstr += "<img onmousedown=gattack(\"bjack\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card50.gif'> ";
+    if (top.RQ)
+      tempstr += "<img onmousedown=gattack(\"rqueen\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card25.gif'> ";
+    if (top.BQ)
+      tempstr += "<img onmousedown=gattack(\"bqueen\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card51.gif'> ";
+    if (top.RK)
+      tempstr += "<img onmousedown=gattack(\"rking\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card26.gif'> ";
+    if (top.BK)
+      tempstr += "<img onmousedown=gattack(\"bking\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card52.gif'> ";
+    if (top.RA)
+      tempstr += "<img onmousedown=gattack(\"race\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card14.gif'> ";
+    if (top.BA)
+      tempstr += "<img onmousedown=gattack(\"bace\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card40.gif'> ";
+    tempstr += " <img border=0 src='" + top.y + "ButVs.jpg'> <a href=javascript:pm('" + mp(top.Target) + "')>" + getcreature(top.Target) + "</a>";
   }
 
   top.frames.main.s_FightWin.innerHTML = tempstr;
@@ -1431,7 +1422,7 @@ function essences() {
   document.getElementById('s_Emerald').innerHTML = emerald;
 }
 
-var keybinder = document.addEventListener("keydown", (event) => {
+var keybinder = document.addEventListener("keypress", (event) => {
   if (event.keyCode === 27) {
     if (p.kb_enabled === 1) {
       p.kb_enabled = 0;
