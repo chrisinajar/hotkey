@@ -5,7 +5,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 8.3",
+  version: "Version: 9.0",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
