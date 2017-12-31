@@ -5,7 +5,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 9.0.1 (testing)",
+  version: "Version: 9.0.2 (testing)",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
@@ -1323,11 +1323,11 @@ function upbuttons() {
     }
     tempstr += "border=0" + top.hio + "src='" + top.y + "ButAttack.jpg' title='Attack With Both Weapons'> <img onmousedown=gattack(\"cast\") ";
     if (pclass == "caster" || pclass == "theurgist") {
-      tempstr += "width=60 height=40 ";
+      tempstr += " width=60 height=40 ";
     }
-    tempstr += "border=0" + top.hio + "src='" + top.y + "ButCast.jpg' title='Cast With Both Spells'> <img onmousedown=gattack(\"lattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid1.jpg' title='Left Weapon and Spell'> <img onmousedown=gattack(\"rattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid2.jpg' title='Right Weapon and Spell'> <img onmousedown=gattack(\"defend\")";
+    tempstr += "border=0" + top.hio + "src='" + top.y + "ButCast.jpg' title='Cast With Both Spells'> <img onmousedown=gattack(\"lattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid1.jpg' title='Left Weapon and Spell'> <img onmousedown=gattack(\"rattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid2.jpg' title='Right Weapon and Spell'> <img onmousedown=gattack(\"defend\") ";
     if (pclass == "vampire"){
-      tempstr += "width=60 height=40 ";
+      tempstr += " width=60 height=40 ";
     }
     tempstr += "border=0" + top.hio + "src='" + top.y + "ButDefend.jpg' title='Defend'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     if (top.RJ)
