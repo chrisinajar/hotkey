@@ -373,21 +373,21 @@ function kb_toggle() {
 function check_Cards() {
   let card_html = "";
   if (top.RJ)
-    card_html += "<a href='javascript:gattack(\"rjack\")'><img border=0 height=28 width=21 src='../card24.gif'></a> ";
+    tempstr += "<img onmousedown=gattack(\"rjack\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card24.gif'> ";
   if (top.BJ)
-    card_html += "<a href='javascript:gattack(\"bjack\")'><img border=0 height=28 width=21 src='../card50.gif'></a> ";
+    tempstr += "<img onmousedown=gattack(\"bjack\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card50.gif'> ";
   if (top.RQ)
-    card_html += "<a href='javascript:gattack(\"rqueen\")'><img border=0 height=28 width=21 src='../card25.gif'></a> ";
+    tempstr += "<img onmousedown=gattack(\"rqueen\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card25.gif'> ";
   if (top.BQ)
-    card_html += "<a href='javascript:gattack(\"bqueen\")'><img border=0 height=28 width=21 src='../card51.gif'></a> ";
+    tempstr += "<img onmousedown=gattack(\"bqueen\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card51.gif'> ";
   if (top.RK)
-    card_html += "<a href='javascript:gattack(\"rking\")'><img border=0 height=28 width=21 src='../card26.gif'></a> ";
+    tempstr += "<img onmousedown=gattack(\"rking\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card26.gif'> ";
   if (top.BK)
-    card_html += "<a href='javascript:gattack(\"bking\")'><img border=0 height=28 width=21 src='../card52.gif'></a> ";
+    tempstr += "<img onmousedown=gattack(\"bking\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card52.gif'> ";
   if (top.RA)
-    card_html += "<a href='javascript:gattack(\"race\")'><img border=0 height=28 width=21 src='../card14.gif'></a> ";
+    tempstr += "<img onmousedown=gattack(\"race\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card14.gif'> ";
   if (top.BA)
-    card_html += "<a href='javascript:gattack(\"bace\")'><img border=0 height=28 width=21 src='../card40.gif'></a> ";
+    tempstr += "<img onmousedown=gattack(\"bace\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card40.gif'> ";
 
   document.getElementById('Poker_Cards').innerHTML = card_html;
 }
@@ -1330,28 +1330,13 @@ function upbuttons() {
       tempstr += " width=60 height=40 ";
     }
     tempstr += "border=0" + top.hio + "src='" + top.y + "ButDefend.jpg' title='Defend'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-    if (top.RJ)
-      tempstr += "<img onmousedown=gattack(\"rjack\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card24.gif'> ";
-    if (top.BJ)
-      tempstr += "<img onmousedown=gattack(\"bjack\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card50.gif'> ";
-    if (top.RQ)
-      tempstr += "<img onmousedown=gattack(\"rqueen\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card25.gif'> ";
-    if (top.BQ)
-      tempstr += "<img onmousedown=gattack(\"bqueen\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card51.gif'> ";
-    if (top.RK)
-      tempstr += "<img onmousedown=gattack(\"rking\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card26.gif'> ";
-    if (top.BK)
-      tempstr += "<img onmousedown=gattack(\"bking\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card52.gif'> ";
-    if (top.RA)
-      tempstr += "<img onmousedown=gattack(\"race\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card14.gif'> ";
-    if (top.BA)
-      tempstr += "<img onmousedown=gattack(\"bace\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card40.gif'> ";
     tempstr += " <img border=0 src='" + top.y + "ButVs.jpg'> <a href=javascript:pm('" + mp(top.Target) + "')>" + getcreature(top.Target) + "</a>";
   }
 
   top.frames.main.s_FightWin.innerHTML = tempstr;
   essences();
   curInv();
+  check_Cards();
 }
 
 function curInv() {
