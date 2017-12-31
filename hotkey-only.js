@@ -5,7 +5,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 9.0",
+  version: "Version: 9.1",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
@@ -1413,7 +1413,7 @@ function essences() {
   document.getElementById('s_Emerald').innerHTML = emerald;
 }
 
-var keybinder = document.addEventListener("keypress", (event) => {
+var keybinder = document.addEventListener("keydown", (event) => {
   if (event.keyCode === 27) {
     if (p.kb_enabled === 1) {
       p.kb_enabled = 0;
