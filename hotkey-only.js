@@ -1243,17 +1243,23 @@ function upbuttons() {
 
       if ((dur > dex + str) && (dur > cnt + agi) && (dur > dex + cnc) && (dur > cnc + ntl) && top.Heal != -1) {
         pclass = "vampire";
-      } else if ((dex + str > dur) && (dex + str > cnc + dex) && (dex + str > cnc + ntl) && (dex + str > dur + cnc) && (dex + str > agi + cnt)) {
+      }
+      if ((dex + str > dur) && (dex + str > cnc + dex) && (dex + str > cnc + ntl) && (dex + str > dur + cnc) && (dex + str > agi + cnt)) {
         pclass = "fighter";
-      } else if (top.Weapon == -1 && top.Shield == -1) {
+      }
+      if (top.Weapon == -1 && top.Shield == -1) {
         pclass = "monk";
-      } else if ((dex + cnc > dur) && (dex + cnc > cnc + ntl) && (dex + cnc > dex + str) && (dex + cnc > ntl + cnc) && (dex + cnc > dur + cnc)) {
+      }
+      if ((dex + cnc > dur) && (dex + cnc > cnc + ntl) && (dex + cnc > dex + str) && (dex + cnc > ntl + cnc) && (dex + cnc > dur + cnc)) {
         pclass = "archer";
-      } else if ((ntl + cnc > dur) && (ntl + cnc > dex + cnc) && (ntl + cnc > dex + str) && (ntl + cnc > cnt + agi) && (ntl + cnc > dur + cnc)) {
+      }
+      if ((ntl + cnc > dur) && (ntl + cnc > dex + cnc) && (ntl + cnc > dex + str) && (ntl + cnc > cnt + agi) && (ntl + cnc > dur + cnc)) {
         pclass = "caster";
-      } else if (top.Heal == -1 && ((dur > str) && (dur > agi) && (dur > ntl))) {
+      }
+      if (top.Heal == -1 && ((dur > str) && (dur > agi) && (dur > ntl))) {
         pclass = "theurgist";
-      } else if (parseInt(top.Weapon, 10) % 12000 >= 0 && parseInt(top.Weapon, 10) % 12000 <= 82 || parseInt(top.Shield, 10) % 12000 >= 0 && parseInt(top.Shield, 10) % 12000 <= 82) {
+      }
+       if (parseInt(top.Weapon, 10) % 12000 >= 0 && parseInt(top.Weapon, 10) % 12000 <= 82 || parseInt(top.Shield, 10) % 12000 >= 0 && parseInt(top.Shield, 10) % 12000 <= 82) {
         pclass = "archer";
       }
       break;
