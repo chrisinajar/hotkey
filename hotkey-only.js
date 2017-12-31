@@ -5,7 +5,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 9.1",
+  version: "Version: 9.1 (Fixed Escape Sorry)",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
@@ -1316,7 +1316,6 @@ function upbuttons() {
 
   if (top.Target != -1) {
     if (yes) tempstr += "<br>";
-    yes = 1;
     tempstr += "<img onmousedown=gattack(\"attack\") ";
     if (pclass == "fighter" || pclass == "monk" || pclass == "archer") {
       tempstr += " width=60 height=40 ";
