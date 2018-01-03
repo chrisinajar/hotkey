@@ -60,6 +60,10 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = msg.replace(/:adumb:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg">');
         upchat("");
       }
+      if (msg.toLowerCase().indexOf("an+ashy+nigger") > -1) {
+        top.OldChat[x] = msg.replace(/an ashy nigger/gi, 'Ashy');
+        upchat("");
+      }
     }
   }
 }, 500);
@@ -1431,6 +1435,10 @@ var keybinder = document.addEventListener("keydown", (event) => {
       chat.value = "";
       fn.Trivial();
     }
+    if (chat.value.trim().toLowerCase().substring(0, 3) == "/cc") {
+      event.preventDefault();
+      clear_chat();
+    }
   }
   if (document.getElementById('s_Response').innerHTML.indexOf('How many do you see?') < 0) {
     if (p.kb_enabled) { //keybindings Enabled
@@ -1903,4 +1911,11 @@ var fn = {
         break;
     }
   }
+}
+
+function clear_chat(){
+  for(let x = 101; x != 0; x--){
+    top.OldChat[x] = "";
+  }
+  upchat("");
 }
