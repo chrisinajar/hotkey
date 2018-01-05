@@ -5,7 +5,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 9.3",
+  version: "Version: 9.4",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
@@ -462,10 +462,6 @@ var load_control = setTimeout(function() {
   //force the application to load the new menu
   upwindow(1);
 }, 500);
-
-window.alert = function(text) {
-  log("tried to alert: " + text);
-}
 
 function npc_porter(npc) {
   if (parseInt(top.ActionDelay) < 150) {
