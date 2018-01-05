@@ -5,7 +5,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 9.2 (Fixed Escape Sorry)",
+  version: "Version: 9.3",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
@@ -60,10 +60,6 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = msg.replace(/:adumb:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg">');
         upchat("");
       }
-      if (msg.indexOf("An Ashy Nigger") > -1) {
-        top.OldChat[x] = msg.replace(/an ashy nigger/gi, 'Ashy');
-        upchat("");
-      }
     }
   }
 }, 500);
@@ -97,7 +93,7 @@ function setBank() {
 function load_new() {
   delete document.head.lastChild;
   document.getElementById('addon').parentNode.parentNode.removeChild(document.getElementById('addon').parentNode);
-  keybinder = removeEventListener("keydown", (event)=>{}, false);
+  keybinder = removeEventListener("keydown", (event) => {}, false);
   chatmodder = clearInterval(chatmodder);
   window.alert = null;
   top.hotlist = [
@@ -1263,7 +1259,7 @@ function upbuttons() {
       if (top.Heal == -1 && ((dur > str) && (dur > agi) && (dur > ntl))) {
         pclass = "theurgist";
       }
-       if (parseInt(top.Weapon, 10) % 12000 >= 0 && parseInt(top.Weapon, 10) % 12000 <= 82 || parseInt(top.Shield, 10) % 12000 >= 0 && parseInt(top.Shield, 10) % 12000 <= 82) {
+      if (parseInt(top.Weapon, 10) % 12000 >= 0 && parseInt(top.Weapon, 10) % 12000 <= 82 || parseInt(top.Shield, 10) % 12000 >= 0 && parseInt(top.Shield, 10) % 12000 <= 82) {
         pclass = "archer";
       }
       break;
@@ -1329,7 +1325,7 @@ function upbuttons() {
       tempstr += " width=60 height=40 ";
     }
     tempstr += "border=0" + top.hio + "src='" + top.y + "ButCast.jpg' title='Cast With Both Spells'> <img onmousedown=gattack(\"lattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid1.jpg' title='Left Weapon and Spell'> <img onmousedown=gattack(\"rattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid2.jpg' title='Right Weapon and Spell'> <img onmousedown=gattack(\"defend\") ";
-    if (pclass == "vampire"){
+    if (pclass == "vampire") {
       tempstr += " width=60 height=40 ";
     }
     tempstr += "border=0" + top.hio + "src='" + top.y + "ButDefend.jpg' title='Defend'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -1362,6 +1358,7 @@ setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
   log('Keybindings Loaded ' + p.version + ' <a target="_blank" href="http://rwkhelp.com/changelog.html">Changelog</a> New Help Page: <a target="_blank" href="http://rwkhelp.com/hotkeys.html">Help</a>', 3);
+  log(`Updated Equipment Menus, included new feature /cc (clears chat).`, 2);
   log(`<font color='orange'>PM from <a href="javascript:pm('Anubis');">Anubis</a>: Hey ${top.login}! Thanks for using my addon. To report any issues please send me a pm and I will address it asap. </font>`, 2);
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
@@ -1913,9 +1910,198 @@ var fn = {
   }
 }
 
-function clear_chat(){
-  for(let x = 101; x != 0; x--){
+function clear_chat() {
+  for (let x = 101; x >= 0; x--) {
     top.OldChat[x] = "";
   }
-  upchat("");
+  document.getElementById('chattybox').value = "";
+  domes("Chat has been cleared.");
+}
+
+function upinventory(shouldi, ughi) {
+  let h = '';
+  if (top.Inventory == "" || top.Inventory == null)
+    top.inventory = ["EMPTY", ""];
+  else
+    top.inventory = top.Inventory.split("-");
+
+  let inputt = top.frames.main.document.getElementById('general').action.value;
+  let g = top.frames.main.document.getElementById('general');
+  let itemtog = [];
+  itemtog[0] = top.Weapon;
+  itemtog[1] = top.Shield;
+  itemtog[2] = top.Gauntlets;
+  itemtog[3] = top.Mantle;
+  itemtog[4] = top.Sleeves;
+  itemtog[5] = top.Cast;
+  itemtog[6] = top.Leggings;
+  itemtog[7] = top.Boots;
+  itemtog[8] = top.Heal;
+  itemtog[9] = top.Relic1;
+  itemtog[10] = top.Relic2;
+  itemtog[11] = top.Relic3;
+  itemtog[12] = top.Relic4;
+  itemtog[13] = top.Relic5;
+  itemtog[14] = top.Relic6;
+  itemtog[15] = top.Helmet;
+
+  if (inputt == "equip" || inputt == "trade" || inputt == "sell" || inputt == "burn" || inputt == "ds" || inputt == "es") {
+    if (shouldi != 0) {
+      if (inputt == "equip" || inputt == "sell" || inputt == "burn" || inputt == "ds" || ughi == 1)
+        h = g.target;
+      else
+        h = g.other;
+
+      top.stickiinv = h.selectedIndex;
+
+      let subarr = top.inventory;
+      let lasttype = 99;
+      let amount = subarr.length - 1;
+      if (amount == 1) {
+        amount = 2;
+        subarr[1] = -1;
+      }
+      h.length = amount - 1;
+      let displace = 0;
+      for (var i = 1; i < amount + displace; i++) {
+        let skipit = 0;
+        for (var x = 0; x < 16; x++) {
+          if (itemtog[x] == "Nothing") continue;
+          if (itemtog[x] == subarr[i - displace]) {
+            itemtog[x] = "Nothing";
+            skipit = 1;
+            break;
+          }
+        }
+        let itype = parseInt(subarr[i - displace] / 1000, 10) % 100;
+        if (lasttype != itype) {
+          displace++;
+          h.length = h.length + 1;
+          if (itype == 0)
+            h.options[i - 1].text = "Helmets";
+          else if (itype == 2)
+            h.options[i - 1].text = "Shields";
+          else if (itype == 3)
+            h.options[i - 1].text = "Gauntlets";
+          else if (itype == 4)
+            h.options[i - 1].text = "Mantles";
+          else if (itype == 5)
+            h.options[i - 1].text = "Sleeves";
+          else if (itype == 6)
+            h.options[i - 1].text = "Damage Spells";
+          else if (itype == 7)
+            h.options[i - 1].text = "Leggings";
+          else if (itype == 8)
+            h.options[i - 1].text = "Boots";
+          else if (itype == 9)
+            h.options[i - 1].text = "Heal Spells";
+          else if (itype == 10)
+            h.options[i - 1].text = "Relics";
+          else if (itype == 11)
+            h.options[i - 1].text = "Others";
+          else if (itype == 12)
+            h.options[i - 1].text = "Bows";
+          else if (itype == 13)
+            h.options[i - 1].text = "Arrows";
+          else if (itype == 14)
+            h.options[i - 1].text = "Weapons";
+          else if (itype == 1)
+            h.options[i - 1].text = "Light Weapons";
+          else if (itype == 15)
+            h.options[i - 1].text = "Heavy Weapons";
+          else if (itype == 16)
+            h.options[i - 1].text = "Precise Weapons";
+          else if (itype == 17)
+            h.options[i - 1].text = "Rapid Damage Spells";
+          else if (itype == 18)
+            h.options[i - 1].text = "Major Damage Spells";
+          else if (itype == 19)
+            h.options[i - 1].text = "Accurate Damage Spells";
+          else if (itype == 20)
+            h.options[i - 1].text = "Durability Helmets";
+          else if (itype == 21)
+            h.options[i - 1].text = "Durability Shields";
+          else if (itype == 22)
+            h.options[i - 1].text = "Durability Gauntlets";
+          else if (itype == 23)
+            h.options[i - 1].text = "Durability Mantles";
+          else if (itype == 24)
+            h.options[i - 1].text = "Durability Sleeves";
+          else if (itype == 25)
+            h.options[i - 1].text = "Durability Leggings";
+          else if (itype == 26)
+            h.options[i - 1].text = "Durability Boots";
+          else if (itype == 27)
+            h.options[i - 1].text = "Essence Elements";
+          h.options[i - 1].text = "__________________" + h.options[i - 1].text + "__________________";
+          h.options[i - 1].value = 999999999;
+          i++;
+        }
+        lasttype = itype;
+        if (skipit)
+          h.options[i - 1].text = getitem(subarr[i - displace]) + " (EQUIPPED)";
+        else
+          h.options[i - 1].text = getitem(subarr[i - displace]);
+        h.options[i - 1].value = subarr[i - displace];
+      }
+    }
+    if (shouldi != 0) {
+      if (top.stickiinv < 0)
+        top.stickiinv = 0;
+      if (top.stickiinv >= h.length)
+        top.stickiinv = h.length - 1;
+      h.selectedIndex = top.stickiinv;
+    }
+    if (inputt != "equip")
+      return;
+    let itype = parseInt(g.target.options[g.target.selectedIndex].value / 1000, 10) % 100;
+
+    let tmpchar = g.target.options[g.target.selectedIndex].text;
+    if (tmpchar.charAt(tmpchar.length - 1) == ")") {
+      g.other.length = 1;
+      g.other.options[0].text = "UNEQUIP";
+      g.other.options[0].value = 11;
+    } else if ([1, 3, 4, 5, 7, 8, 20, 22, 23, 24, 25].includes(itype)) {
+      g.other.innerHTML = `<option value=0>Auto</option>`;
+    } else if ([0, 2, 12, 13, 14, 15, 16, 21].includes(itype)) {
+      g.other.innerHTML = `<option value=1>Right Hand</option> <option value=2>Left Hand</option>`;
+      if (top.Weapon == "-1" && top.Shield != "-1") {
+        g.other.value = 1;
+      } else if (top.Weapon != "-1" && top.Shield == "-1") {
+        g.other.value = 2;
+      } else if (top.Weapon == "-1" && top.shield == "-1") {
+        g.other.value = 1;
+      }
+    } else if ([6, 9, 17, 18, 19].includes(itype)) {
+      g.other.innerHTML = `<option value=3>Spell One</option> <option value=4>Spell Two</option>`;
+      if (top.Cast == "-1" && top.Heal != "-1") {
+        g.other.value = 3;
+      } else if (top.Cast != "-1" && top.Heal == "-1") {
+        g.other.value = 4;
+      } else if (top.Cast == "-1" && top.Heal == "-1") {
+        g.other.value = 3;
+      }
+    } else if (itype == 10) {
+      g.other.innerHTML = `<option value=5>Relic 1</option> <option value=6>Relic 2</option> <option value=7>Relic 3</option> <option value=8>Relic 4</option> <option value=9>Relic 5</option> <option value=10>Relic 6</option> `;
+      if (top.Relic1 == -1) {
+        g.other.value = 5;
+      } else if (top.Relic2 == -1) {
+        g.other.value = 6;
+      } else if (top.Relic3 == -1) {
+        g.other.value = 7;
+      } else if (top.Relic4 == -1) {
+        g.other.value = 8;
+      } else if (top.Relic5 == -1) {
+        g.other.value = 9;
+      } else if (top.Relic6 == -1) {
+        g.other.value = 10;
+      } else {
+        g.other.value = 5;
+      }
+    } else {
+      g.other.length = 1;
+      g.other.options[0].text = "UNEQUIPABLE";
+      g.other.options[0].value = 0;
+    }
+  }
 }
