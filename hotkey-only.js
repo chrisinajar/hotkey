@@ -458,162 +458,6 @@ function setPercents() {
   top.frames.main.document.getElementById("s_Cnt").innerText = cnt;
 }
 
-function list_enchantments() {
-  let essence = '';
-  let rank = '';
-  let message = '';
-  let approbation = '';
-
-  let enchantments = [
-    top.Ench1,
-    top.Ench2,
-    top.Ench3,
-    top.Ench4,
-    top.Ench5,
-    top.Ench6,
-    top.Ench7,
-    top.Ench8,
-    top.Ench9,
-    top.Ench10
-  ]
-
-  let essences = [
-    top.Mnch1,
-    top.Mnch2,
-    top.Mnch3,
-    top.Mnch4,
-    top.Mnch5,
-    top.Mnch6,
-    top.Mnch7,
-    top.Mnch8,
-    top.Mnch9,
-    top.Mnch10
-  ]
-
-  let ranks = [
-    top.MnchRank1,
-    top.MnchRank2,
-    top.MnchRank3,
-    top.MnchRank4,
-    top.MnchRank5,
-    top.MnchRank6,
-    top.MnchRank7,
-    top.MnchRank8,
-    top.MnchRank9,
-    top.MnchRank10
-  ]
-
-  for (let x = 10; x >= 0; x--) {
-    if (enchantments[x] > 0) {
-      switch (essences[x]) {
-        case 1:
-          message = ` - Essence: Fire`;
-          break;
-
-        case 2:
-          message = ` - Essence: Lightning`;
-          break;
-
-        case 3:
-          message = ` - Essence: Ice`;
-          break;
-
-        case 4:
-          message = ` - Essence: Dragon Flames`;
-          break;
-
-        case 5:
-          message = ` - Essence: Dragon Storm`;
-          break;
-
-        case 6:
-          message = ` - Essence: Dragon Shards`;
-          break;
-
-        case 7:
-          message = ` - Ruby Rank: ${ranks[x]}`;
-          break;
-
-        case 8:
-          message = ` - Sapphire Rank: ${ranks[x]}`;
-          break;
-
-        case 9:
-          message = ` - Emerald Rank: ${ranks[x]}`;
-          break;
-      }
-      let Slot = '';
-      switch (x) {
-        case 0:
-          Slot = "Left Hand"
-          break;
-        case 1:
-          Slot = "Skull"
-          break;
-        case 2:
-          Slot = "Right Hand"
-          break;
-        case 3:
-          Slot = "Forearms"
-          break;
-        case 4:
-          Slot = "Chest"
-          break;
-        case 5:
-          Slot = "Arms"
-          break;
-        case 6:
-          Slot = "Left Brain"
-          break;
-        case 7:
-          Slot = "Legs"
-          break;
-        case 8:
-          Slot = "Feet"
-          break;
-        case 9:
-          Slot = "Right Brain"
-          break;
-      }
-
-      switch (enchantments[x]) {
-        case 7:
-          message = `${Slot}: The Calling of Titus` + message;
-          break;
-        case 15:
-          message = `${Slot}: The Calling of Cassius` + message;
-          break;
-        case 23:
-          message = `${Slot}: The Calling of Lestat` + message;
-          break;
-        case 29:
-          message = `${Slot}: The Calling of Cara` + message;
-          break;
-        case 30:
-          message = `${Slot}: Dexterous Hoist` + message;
-          break;
-        case 31:
-          message = `${Slot}: Stream of Conscious` + message;
-          break;
-        case 32:
-          message = `${Slot}: Blood Bath` + message;
-          break;
-        case 33:
-          message = `${Slot}: Vampric Leech` + message;
-          break;
-        case 34:
-          message = `${Slot}: Death Spike` + message;
-          break;
-        case 35:
-          message = `${Slot}: Denial of the Believer` + message;
-          break;
-      }
-      log(message);
-      message = '';
-    }
-  }
-}
-
 var load_control = setTimeout(function() {
   //force the application to load the new menu
   upwindow(1);
@@ -1358,7 +1202,7 @@ setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
   log('Keybindings Loaded ' + p.version + ' <a target="_blank" href="http://rwkhelp.com/changelog.html">Changelog</a> New Help Page: <a target="_blank" href="http://rwkhelp.com/hotkeys.html">Help</a>', 3);
-  log(`Updated Equipment Menus, included new feature /cc (clears chat).`, 2);
+  log(`Updated Equipment Menus, included new feature /cc (clears chat), Removing old functions`, 2);
   log(`<font color='orange'>PM from <a href="javascript:pm('Anubis');">Anubis</a>: Hey ${top.login}! Thanks for using my addon. To report any issues please send me a pm and I will address it asap. </font>`, 2);
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
@@ -1460,64 +1304,6 @@ var keybinder = document.addEventListener("keydown", (event) => {
     //console.log("SECURITY CHECK");
   }
 });
-
-function trivial_Gold() {
-  chat.value = "";
-  let king = document.getElementById("king");
-  let action = document.getElementsByName("action")[1];
-  let amount = document.getElementsByName("othera")[1];
-  let submit = document.getElementById("s_subbut2").childNodes[0];
-  let gold = parseInt(top.Gold, 10);
-  let reply = document.getElementById('s_Response');
-
-  if (gold >= 1000000000 && gold <= 1499999999) {
-    if (top.LocZ != "For") {
-      action.value = "food";
-      updateaction("food", king);
-      amount.value = (parseInt(top.Gold, 10) - 1000000000);
-      submit.click();
-      setTimeout(() => {
-        action.value = "settle";
-        updateaction("settle", king);
-        reply.innerHTML = "Trivial gold dumped";
-      }, 150);
-    } else {
-      action.value = "deposit";
-      updateaction("deposit", king);
-      amount.value = (parseInt(top.Gold, 10) - 1000000000);
-      submit.click();
-      setTimeout(() => {
-        action.value = "settle";
-        updateaction("settle", king);
-        reply.innerHTML = "Trivial gold dumped";
-      }, 150);
-    }
-  } else if (gold <= 499999999 && gold >= 999999) {
-    if (top.LocZ != "For") {
-      action.value = "food";
-      updateaction("food", king);
-      amount.value = parseInt(top.Gold, 10);
-      submit.click();
-      setTimeout(() => {
-        action.value = "settle";
-        updateaction("settle", king);
-        reply.innerHTML = "Trivial gold dumped";
-      }, 150);
-    } else {
-      action.value = "deposit";
-      updateaction("deposit", king);
-      amount.value = parseInt(top.Gold, 10);
-      submit.click();
-      setTimeout(() => {
-        action.value = "settle";
-        updateaction("settle", king);
-        reply.innerHTML = "Trivial gold dumped";
-      }, 150);
-    }
-  } else {
-    reply.innerHTML = "Non trivial gold amount.";
-  }
-}
 
 var fn = {
   //Setting Selectors
@@ -1903,7 +1689,7 @@ var fn = {
         break;
 
       case 222:
-        list_enchantments();
+        genfull("chat", "/app", 0);
         event.preventDefault();
         break;
     }
