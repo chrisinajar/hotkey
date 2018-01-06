@@ -1760,6 +1760,8 @@ function upinventory(shouldi, ughi) {
           displace++;
           h.length = h.length + 1;
           if (itype == 0)
+            h.options[i - 1].text = "Weapons";
+          else if (itype == 1)
             h.options[i - 1].text = "Helmets";
           else if (itype == 2)
             h.options[i - 1].text = "Shields";
@@ -1786,8 +1788,6 @@ function upinventory(shouldi, ughi) {
           else if (itype == 13)
             h.options[i - 1].text = "Arrows";
           else if (itype == 14)
-            h.options[i - 1].text = "Weapons";
-          else if (itype == 1)
             h.options[i - 1].text = "Light Weapons";
           else if (itype == 15)
             h.options[i - 1].text = "Heavy Weapons";
