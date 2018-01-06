@@ -21,6 +21,223 @@ var p = {
   max_inventory: 50
 };
 
+var tp = {
+  form: {
+    act: () => {
+      document.getElementsByName("action")[0].value = "tele";
+      updateaction("tele", document.getElementById("general"));
+    },
+    x: document.getElementsByName("target")[0],
+    y: document.getElementsByName("other")[0],
+    sub: () => {
+      document.getElementById("general").submit();
+    },
+  },
+  to: (x, y) => {
+    tp.form.act();
+    tp.form.x.value = x;
+    tp.form.y.value = y;
+    tp.form.sub();
+  },
+  heaven: {
+    palace: () => {
+      tp.to(162, 159);
+    },
+    keep: () => {
+      tp.to(66, 66);
+    },
+    citizen: () => {
+      tp.to(150, 150);
+    },
+  },
+  sky: {
+    shrine: () => {
+      tp.to(100, 250);
+    },
+    citizen: () => {
+      tp.to(69, 157);
+    },
+  },
+  surface: {
+    mines: () => {
+      tp.to(162, 159);
+    },
+    keeper: () => {
+      tp.to(150, 150);
+    },
+    pub: () => {
+      tp.to(40, 140);
+    },
+    puddle: () => {
+      tp.to(140, 190);
+    },
+    brawl: () => {
+      tp.to(141, 174);
+    },
+  },
+  dungeon: {
+    insane: () => {
+      tp.to(100, 200);
+    },
+  },
+  hell: {
+    keep: () => {
+      tp.to(66, 66);
+    },
+    collector: () => {
+      tp.to(141, 174);
+    },
+    forge: () => {
+      tp.to(141, 146);
+    },
+  },
+  quest: {
+    shore: () => {
+      tp.to(145, 153);
+    },
+    mountians: () => {
+      tp.to(207, 188);
+    },
+    lava: () => {
+      tp.to(9, 256);
+    },
+    sky: () => {
+      tp.to(78, 242);
+    },
+    dungeon: () => {
+      tp.to(240, 60);
+    },
+    lake: () => {
+      tp.to(40, 140);
+    },
+    temple: () => {
+      tp.to(40, 225);
+    },
+  },
+  port: {
+    dillusia: () => {
+      tp.to(274, 158);
+    },
+    disseria: () => {
+      tp.to(268, 244);
+    },
+    kravot: () => {
+      tp.to(267, 208);
+    },
+    crovesk: () => {
+      tp.to(247, 184);
+    },
+    belania: () => {
+      tp.to(261, 20);
+    },
+    satinia: () => {
+      tp.to(290, 75);
+    },
+    demainia: () => {
+      tp.to(247, 104);
+    },
+    wefaria: () => {
+      tp.to(210, 10);
+    },
+    angilek: () => {
+      tp.to(193, 9);
+    },
+    retrok: () => {
+      tp.to(173, 19);
+    },
+    tuval: () => {
+      tp.to(117, 14);
+    },
+    gretia: () => {
+      tp.to(25, 31);
+    },
+    merlana: () => {
+      tp.to(24, 61);
+    },
+    devell: () => {
+      tp.to(17, 174);
+    },
+    hykra: () => {
+      tp.to(17, 271);
+    },
+    rayvosk: () => {
+      tp.to(209, 281);
+    },
+    slevisk: () => {
+      tp.to(178, 244);
+    },
+    honar: () => {
+      tp.to(56, 208);
+    },
+    kremk: () => {
+      tp.to(47, 290);
+    },
+    naneesh: () => {
+      tp.to(128, 234);
+    },
+    redock: () => {
+      tp.to(223, 268);
+    },
+    berena: () => {
+      tp.to(277, 277);
+    },
+    drehador: () => {
+      tp.to(267, 226);
+    },
+    afelik: () => {
+      tp.to(245, 124);
+    },
+    drevina: () => {
+      tp.to(155, 43);
+    },
+    carella: () => {
+      tp.to(129, 51);
+    },
+    treval: () => {
+      tp.to(97, 21);
+    },
+    roggork: () => {
+      tp.to(50, 49);
+    },
+    andal: () => {
+      tp.to(130, 164);
+    },
+    perydan: () => {
+      tp.to(150, 197);
+    },
+  },
+  wp: {
+    loc_1: [0, 0],
+    loc_2: [0, 0],
+    loc_3: [0, 0],
+    loc_4: [0, 0],
+    jump1: () => {
+      tp.to([tp.wp.loc_1[0], tp.wp.loc_1[1]]);
+    },
+    jump2: () => {
+      tp.to([tp.wp.loc_2[0], tp.wp.loc_2[1]]);
+    },
+    jump3: () => {
+      tp.to([tp.wp.loc_3[0], tp.wp.loc_3[1]]);
+    },
+    jump4: () => {
+      tp.to([tp.wp.loc_4[0], tp.wp.loc_4[1]]);
+    },
+    set1: () => {
+      tp.wp.loc_1 = [parseInt(top.LocX), parseInt(top.LocY)];
+    },
+    set2: () => {
+      tp.wp.loc_2 = [parseInt(top.LocX), parseInt(top.LocY)];
+    },
+    set3: () => {
+      tp.wp.loc_3 = [parseInt(top.LocX), parseInt(top.LocY)];
+    },
+    set4: () => {
+      tp.wp.loc_4 = [parseInt(top.LocX), parseInt(top.LocY)];
+    },
+  }
+}
+
 var main = (() => {
   let elm = document.createElement('script');
   elm.src = "https://apis.google.com/js/client.js";
@@ -233,7 +450,57 @@ var mainLoad = (function() {
                      Attack Button Enlargement <br>
                      <label>Auto: <input type="radio" name="big-button" value='auto'></label> <label>None: <input type="radio" name="big-button" value="none" checked></label> <br><label>Attack: <input type="radio" name="big-button" value='attack'></label> <label>Cast: <input type="radio" name="big-button" value="cast"></label> <label>Defend: <input type="radio" name="big-button" value="defend"></label>
                      </span> <br>
-                     <input id='wpb' type='button' value='Show Waypoints' onclick='special_locations();'>
+                     <center>
+                     <table style='text-align:center;'>
+                        <tr>
+                           <td>
+                           Waypoints: <select id="waypoints">
+                           <option value=false>-----HEAVEN-----</option>
+                             <option value="palace">Forbidden Palace</option>
+                             <option value="vkeep">Heaven Keep</option>
+                             <option value="vcitizen">A Citizen</option>
+
+                           <option value=false>-----SKY-----</option>
+                             <option value="shrine">Skill Shrine</option>
+                             <option value="scitizen">A Citizen</option>
+
+                           <option value=false>-----SURFACE-----</option>
+                             <option value="mines">Forbidden Mines</option>
+                             <option value="keeper">Ash Keeper</option>
+                             <option value="pub">Stallions Pub</option>
+                             <option value="puddle">Le Puddle Deep</option>
+                             <option value="brawl">Inquest Brawl</option>
+
+                           <option value=false>-----DUNGEON-----</option>
+                             <option value="id">Insane Dungeon</option>
+
+                           <option value=false>-----HELL-----</option>
+                             <option value="lkeep">Hell Keep</option>
+                             <option value="collector">Ash Collector</option>
+                             <option value="forge">Forge Entrance</option>
+
+                           <option value=false>-----QUEST-----</option>
+                             <option value="shore">Hell Shore</option>
+                             <option value="mountians">Dungeon Mountians</option>
+                             <option value="lava">Dungeon Lava</option>
+                             <option value="sky">Sky Entrance</option>
+                             <option value="dungeon">Dungeon Entrance</option>
+                             <option value="lake">Heaven Lake</option>
+                             <option value="temple">The Temple</option>
+
+                           <option value=false>-----PERSONAL-----</option>
+                             <option value="jump1">Personal 1</option>
+                             <option value="jump2">Personal 2</option>
+                             <option value="jump3">Personal 3</option>
+                             <option value="jump4">Return</option>
+                             <option value="set1">Set 1</option>
+                             <option value="set2">Set 2</option>
+                             <option value="set3">Set 3</option>
+                           </select><button onclick="porter(document.getElementById('waypoints').value)">Submit</button>
+                          </td>
+                        </tr>
+                     </table>
+                     </center>
                      </font>
                      </td>
                      <td>
@@ -246,67 +513,6 @@ var mainLoad = (function() {
                   </tr>
                   </table>
                   <center>
-                  <span id='waypoint_menu' hidden>
-                     <table style='text-align:center;'>
-                        <tr>
-                           <td style='background-color:#6666FF'>
-                              <input type="button" value="Forbidden Palace" onclick="javascript:npc_porter('palace');">
-                              <input type="button" value="A Citizen" onclick="javascript:npc_porter('hevcitizen');">
-                              <input type="button" value="Heaven Keep" onclick="javascript:npc_porter('keep');">
-                           </td>
-                        </tr>
-                        <tr>
-                           <td style='background-color:#BBBBFF'>
-                              <input type="button" value="Sky Shrine" onclick="javascript:npc_porter('shrine');">
-                              <input type="button" value="A Citizen" onclick="javascript:npc_porter('skycitizen');">
-                           </td>
-                        </tr>
-                        <tr>
-                           <td style='background-color:#C8C8C8'>
-                              <input type="button" value="Forbidden Mines" onclick="javascript:npc_porter('mines');">
-                              <input type="button" value="Ash Keeper" onclick="javascript:npc_porter('ashk');">
-                              <input type="button" value="Stallions Pub" onclick="javascript:npc_porter('pub');">
-                              <input type="button" value="Le Puddle Deep" onclick="javascript:npc_porter('puddle');">
-                              <input type="button" value="Inquest Brawl" onclick="javascript:npc_porter('brawl');">
-                           </td>
-                        </tr>
-                        <tr>
-                           <td style='background-color:#FFBBBB'>
-                              <input type="button" value="Insane Dungeon" onclick="javascript:npc_porter('insane');">
-                           </td>
-                        </tr>
-                        <tr>
-                           <td style='background-color:#FF6666'>
-                              <input type="button" value="Ash Collector" onclick="javascript:npc_porter('ashc');">
-                              <input type="button" value="Hell Keep" onclick="javascript:npc_porter('keep');">
-                              <input type="button" value="Forge Entrance" onclick="javascript:npc_porter('forge');">
-                           </td>
-                        </tr>
-                        <tr>
-                           <td style='background-color:#969696'>
-                              <input type="button" value="Shore of Hell" onclick="javascript:npc_porter('shore');">
-                              <input type="button" value="Dungeon Mountains" onclick="javascript:npc_porter('mountain');">
-                              <input type="button" value="Dungeon Lava" onclick="javascript:npc_porter('lava');">
-                              <input type="button" value="Sky Entrance" onclick="javascript:npc_porter('sky');">
-                              <input type="button" value="Dungeon Entrance" onclick="javascript:npc_porter('dun');">
-                              <input type="button" value="Heaven Lake" onclick="javascript:npc_porter('lake');">
-                              <input type="button" value="Temple" onclick="javascript:npc_porter('temple');">
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <input id='pwp1' type="button" value="Set WP 1" onclick="javascript:npc_porter('pwp1');">
-                              <input id='rpwp1' hidden type='button' value='Clear 1' onclick='javascript:resetwp(1);'>
-                              <input id='pwp2' type="button" value="Set WP 2" onclick="javascript:npc_porter('pwp2');">
-                              <input id='rpwp2' hidden type='button' value='Clear 2' onclick='javascript:resetwp(2);'>
-                              <input id='pwp3' type="button" value="Set WP 3" onclick="javascript:npc_porter('pwp3');">
-                              <input id='rpwp3' hidden type='button' value='Clear 3' onclick='javascript:resetwp(3);'>
-                              <input id='pwp4' type="button" value="BB Return" onclick="javascript:npc_porter('pwp4');">
-                           </td>
-                        </tr>
-                     </table>
-                  </span>
-
                   <span id='burn-menu' hidden=true>Relic to Save: <label>Bp/Lestat: <input type="radio" id="burn_check" name="burn_check" value='no' checked title='Save Blood Pinch and Lestat'></label> <label>Nothing: <input type="radio" id="burn_check" name="burn_check" value='yes' title='Burn Everything Not Valuable'></label><label>1bils: <input type="radio" id="burn_check" name="burn_check" value='1b' title='Cara/Lestat/Titus/Cassius/DS/VL/DH/SOC will not be burnt.'></label> <span title='BP/Lestat Means Blood Pinch and Lestat will not be burnt, Nothing means bp/lestat will be burnt, 1bils = Cara/Lestat/Titus/Cassius/DS/VL/DH/SOC will not be burnt.'><a id="test">?</a></span><br>
                   <center><span id="inventory-counter"> </span></center>
                   <span>
@@ -463,310 +669,97 @@ var load_control = setTimeout(function() {
   upwindow(1);
 }, 500);
 
-function npc_porter(npc) {
-  if (parseInt(top.ActionDelay) < 150) {
-    switch (npc) {
-      case 'temple':
-        if (top.LocZ == "Sur") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(40, 10);
-          document.getElementsByName('other')[0].value = parseInt(225, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Surface', 1);
-        }
-        break;
-      case 'mines':
-        if (top.LocZ == "Sur") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(162, 10);
-          document.getElementsByName('other')[0].value = parseInt(159, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Surface');
-        }
-        break;
-      case 'ashk':
-        if (top.LocZ == "Sur") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(150, 10);
-          document.getElementsByName('other')[0].value = parseInt(150, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Surface');
-        }
-        break;
-      case 'pub':
-        if (top.LocZ == "Sur") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(150, 10);
-          document.getElementsByName('other')[0].value = parseInt(145, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Surface');
-        }
-        break;
-      case 'puddle':
-        if (top.LocZ == "Sur") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(140, 10);
-          document.getElementsByName('other')[0].value = parseInt(190, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Surface');
-        }
-        break;
-      case 'sky':
-        if (top.LocZ == "Sur") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(78, 10);
-          document.getElementsByName('other')[0].value = parseInt(242, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Surface');
-        }
-        break;
-      case 'dun':
-        if (top.LocZ == "Sur") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(240, 10);
-          document.getElementsByName('other')[0].value = parseInt(60, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Surface');
-        }
-        break;
-      case 'brawl':
-        if (top.LocZ == "Sur") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(40, 10);
-          document.getElementsByName('other')[0].value = parseInt(140, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Surface');
-        }
-        break;
-      case 'palace':
-        if (top.LocZ == "Hev") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(162, 10);
-          document.getElementsByName('other')[0].value = parseInt(159, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Heaven');
-        }
-        break;
-      case 'hevcitizen':
-        if (top.LocZ == "Hev") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(150, 10);
-          document.getElementsByName('other')[0].value = parseInt(150, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Heaven');
-        }
-        break;
-      case 'keep':
-        if (top.LocZ == "Hev" || top.LocZ == 'Hel') {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(66, 10);
-          document.getElementsByName('other')[0].value = parseInt(66, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Heaven or Hell');
-        }
-        break;
-      case 'lake':
-        if (top.LocZ == "Hev") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(40, 10);
-          document.getElementsByName('other')[0].value = parseInt(140, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used on Heaven');
-        }
-        break;
-      case 'shrine':
-        if (top.LocZ == "Sky") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(100, 10);
-          document.getElementsByName('other')[0].value = parseInt(250, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used in Sky');
-        }
-        break;
-      case 'skycitizen':
-        if (top.LocZ == "Sky") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(69, 10);
-          document.getElementsByName('other')[0].value = parseInt(157, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used in Sky');
-        }
-        break;
-      case 'insane':
-        if (top.LocZ == "Dun") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(100, 10);
-          document.getElementsByName('other')[0].value = parseInt(200, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used in Dungeon');
-        }
-        break;
-      case 'mountain':
-        if (top.LocZ == "Dun") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(207, 10);
-          document.getElementsByName('other')[0].value = parseInt(188, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used in Dungeon');
-        }
-        break;
-      case 'lava':
-        if (top.LocZ == "Dun") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(9, 10);
-          document.getElementsByName('other')[0].value = parseInt(256, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used in Dungeon');
-        }
-        break;
-      case 'ashc':
-        if (top.LocZ == "Hel") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(141, 10);
-          document.getElementsByName('other')[0].value = parseInt(174, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used in Hell');
-        }
-        break;
-      case 'shore':
-        if (top.LocZ == "Hel") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(145, 10);
-          document.getElementsByName('other')[0].value = parseInt(153, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used in Hell');
-        }
-        break;
-      case 'forge':
-        if (top.LocZ == "Hel") {
-          document.getElementsByName('action')[0].value = 'tele';
-          updateaction("tele", document.getElementById('general'));
-          document.getElementsByName('target')[0].value = parseInt(141, 10);
-          document.getElementsByName('other')[0].value = parseInt(146, 10);
-          document.getElementById('general').submit();
-        } else {
-          log('This can only be used in Hell');
-        }
-        break;
-      case 'pwp1':
-        if (p.pwps[0] == 0) {
-          document.getElementById('rpwp1').hidden = false;
-          let wp = top.LocX + ',' + top.LocZ + ',' + top.LocY;
-          //chrome.storage.sync.set({"wp1": wp});
-          p.pwps[0] = wp;
-          log(`Waypoint 1 set to ${wp}`, 0);
-          document.getElementById('pwp1').value = "Goto " + wp;
-        } else {
-          let location_array = p.pwps[0].split(',');
-          if (top.LocZ == location_array[1]) {
-            document.getElementsByName('action')[0].value = 'tele';
-            updateaction("tele", document.getElementById('general'));
-            document.getElementsByName('target')[0].value = parseInt(location_array[0], 10);
-            document.getElementsByName('other')[0].value = parseInt(location_array[2], 10);
-            document.getElementById('general').submit();
-          } else {
-            log(`This can only be used in ${location_array[1]}`);
-          }
-        }
-        break;
-      case 'pwp2':
-        if (p.pwps[1] == 0) {
-          document.getElementById('rpwp2').hidden = false;
-          let wp = top.LocX + ',' + top.LocZ + ',' + top.LocY;
-          //chrome.storage.sync.set({"wp2": wp});
-          p.pwps[1] = wp;
-          log(`Waypoint 2 set to ${wp}`, 0);
-          document.getElementById('pwp2').value = "Goto " + wp;
-        } else {
-          let location_array = p.pwps[1].split(',');
-          if (top.LocZ == location_array[1]) {
-            document.getElementsByName('action')[0].value = 'tele';
-            updateaction("tele", document.getElementById('general'));
-            document.getElementsByName('target')[0].value = parseInt(location_array[0], 10);
-            document.getElementsByName('other')[0].value = parseInt(location_array[2], 10);
-            document.getElementById('general').submit();
-          } else {
-            log(`This can only be used in ${location_array[1]}`);
-          }
-        }
-        break;
-      case 'pwp3':
-        if (p.pwps[2] == 0) {
-          document.getElementById('rpwp3').hidden = false;
-          let wp = top.LocX + ',' + top.LocZ + ',' + top.LocY;
-          //chrome.storage.sync.set({"wp3": wp});
-          p.pwps[2] = wp;
-          log(`Waypoint 3 set to ${wp}`, 0);
-          document.getElementById('pwp3').value = "Goto " + wp;
-        } else {
-          let location_array = p.pwps[2].split(',');
-          if (top.LocZ == location_array[1]) {
-            document.getElementsByName('action')[0].value = 'tele';
-            updateaction("tele", document.getElementById('general'));
-            document.getElementsByName('target')[0].value = parseInt(location_array[0], 10);
-            document.getElementsByName('other')[0].value = parseInt(location_array[2], 10);
-            document.getElementById('general').submit();
-          } else {
-            log(`This can only be used in ${location_array[1]}`);
-          }
-        }
-        break;
-      case 'pwp4':
-        if (p.pwps[3] == 0) {
-          log(`Cannot manually set BB return, Must use b hotkey.`, 1);
-        } else {
-          let location_array = p.pwps[3].split(',');
-          if (top.LocZ == location_array[1]) {
-            document.getElementsByName('action')[0].value = 'tele';
-            updateaction("tele", document.getElementById('general'));
-            document.getElementsByName('target')[0].value = parseInt(location_array[0], 10);
-            document.getElementsByName('other')[0].value = parseInt(location_array[2], 10);
-            document.getElementById('general').submit();
-          } else {
-            log(`This can only be used in ${location_array[1]}`);
-          }
-        }
-    }
-  } else {
-    log(`You attempted to do an action to quickly which may have resulted in a 10 second penelty. Please retry.`, 1);
+function porter(location) {
+  switch (location) {
+    case "palace":
+      tp.heaven.palace();
+      break;
+    case "vkeep":
+      tp.heaven.keep();
+      break;
+    case "vcitizen":
+      tp.heaven.citizen();
+      break;
+    case "shrine":
+      tp.sky.shrine();
+      break;
+    case "scitizen":
+      tp.sky.citizen();
+      break;
+    case "mines":
+      tp.surface.mines();
+      break;
+    case "keeper":
+      tp.surface.keeper();
+      break;
+    case "pub":
+      tp.surface.pub();
+      break;
+    case "puddle":
+      tp.surface.puddle();
+      break;
+    case "brawl":
+      tp.surface.brawl();
+      break;
+    case "id":
+      tp.dungeon.insane();
+      break;
+    case "lkeep":
+      tp.hell.keep();
+      break;
+    case "collector":
+      tp.hell.collector();
+      break;
+    case "forge":
+      tp.hell.forge();
+      break;
+    case "shore":
+      tp.quest.shore();
+      break;
+    case "mountians":
+      tp.quest.mountians();
+      break;
+    case "lava":
+      tp.quest.lava();
+      break;
+    case "sky":
+      tp.quest.sky();
+      break;
+    case "dungeon":
+      tp.quest.dungeon();
+      break;
+    case "lake":
+      tp.quest.lake();
+      break;
+    case "temple":
+      tp.quest.temple();
+      break;
+    case "jump1":
+      tp.wp.jump1();
+      break;
+    case "jump2":
+      tp.wp.jump2();
+      break;
+    case "jump3":
+      tp.wp.jump3();
+      break;
+    case "jump4":
+      tp.wp.jump4();
+      break;
+    case "set1":
+      tp.wp.set1();
+      break;
+    case "set2":
+      tp.wp.set2();
+      break;
+    case "set3":
+      tp.wp.set3();
+      break;
+
+    default:
+      //No matching case found. Where did you try to go?
+      console.log(location);
+      break;
   }
 }
 
