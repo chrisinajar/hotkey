@@ -5,7 +5,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 9.5",
+  version: "Version: 9.6",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
@@ -547,29 +547,6 @@ function randomValue(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function resetwp(wp) {
-  switch (wp) {
-    case 1:
-      document.getElementById('rpwp1').hidden = true;
-      p.pwps[0] = 0;
-      log(`Waypoint 1 cleared`, 0);
-      document.getElementById('pwp1').value = "Set WP 1";
-      break;
-    case 2:
-      document.getElementById('rpwp2').hidden = true;
-      p.pwps[1] = 0;
-      log(`Waypoint 2 cleared`, 0);
-      document.getElementById('pwp2').value = "Set WP 2";
-      break;
-    case 3:
-      document.getElementById('rpwp3').hidden = true;
-      p.pwps[2] = 0;
-      log(`Waypoint 3 cleared`, 0);
-      document.getElementById('pwp3').value = "Set WP 3";
-      break;
-  }
-}
-
 function kb_toggle() {
   if (p.kb_enabled === 1) {
     p.kb_enabled = 0;
@@ -600,26 +577,6 @@ function check_Cards() {
     card_html += "<img onmousedown=gattack(\"bace\") border=0" + top.hio + "height=28 width=21 src='" + top.y + "card40.gif'> ";
 
   document.getElementById('Poker_Cards').innerHTML = card_html;
-}
-
-function pm(thesubber) {
-  kb_toggle();
-  hl(thesubber);
-  let thenamestring = "/m " + ms(thesubber) + ": ";
-  let thenamestring2 = "/p " + ms(thesubber);
-  let thenamestring3 = "/s " + ms(thesubber);
-  if (top.frames.main.chat.target.value == thenamestring3) {
-    thenamestring = "/ignore " + ms(thesubber);
-  } else if (top.frames.main.chat.target.value == thenamestring) {
-    thenamestring = thenamestring2;
-  } else if (top.frames.main.chat.target.value == thenamestring2) {
-    thenamestring = thenamestring3;
-  }
-  top.frames.main.chat.target.value = thenamestring;
-  top.frames.main.chat.target.focus();
-  top.frames.main.chat.target.value = thenamestring;
-  top.frames.main.chat.target.focus();
-  upplayers();
 }
 
 var thinger = document.chat.target.addEventListener("click", function() {
@@ -667,11 +624,6 @@ function setPercents() {
   top.frames.main.document.getElementById("s_Cnc").innerText = cnc;
   top.frames.main.document.getElementById("s_Cnt").innerText = cnt;
 }
-
-var load_control = setTimeout(function() {
-  //force the application to load the new menu
-  upwindow(1);
-}, 500);
 
 function porter(location) {
   switch (location) {
@@ -764,16 +716,6 @@ function porter(location) {
       //No matching case found. Where did you try to go?
       console.log(location);
       break;
-  }
-}
-
-function special_locations() {
-  if (document.getElementById('waypoint_menu').hidden == true) {
-    document.getElementById('waypoint_menu').hidden = false;
-    document.getElementById('wpb').value = 'Hide Waypoints';
-  } else {
-    document.getElementById('waypoint_menu').hidden = true;
-    document.getElementById('wpb').value = 'Show Waypoints';
   }
 }
 
@@ -1195,7 +1137,7 @@ setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
   log('Keybindings Loaded ' + p.version + ' <a target="_blank" href="http://rwkhelp.com/changelog.html">Changelog</a> New Help Page: <a target="_blank" href="http://rwkhelp.com/hotkeys.html">Help</a>', 3);
-  log(`9.5 includes 2 bug fixes, and an update to teleporting waypoints.`, 2);
+  log(`9.6 includes 3 bug fixes, and an update to teleporting waypoints, Personal waypoints are fixed as well.`, 2);
   log(`<font color='orange'>PM from <a href="javascript:pm('Anubis');">Anubis</a>: Hey ${top.login}! Thanks for using my addon. To report any issues please send me a pm and I will address it asap. </font>`, 2);
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
