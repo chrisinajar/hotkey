@@ -202,15 +202,19 @@ var tp = {
     },
     set1: () => {
       tp.wp.loc_1 = [parseInt(top.LocX), parseInt(top.LocY)];
+      domes("Waypoint has been set to " + tp.wp.loc_1[0] + "," + tp.wp.loc_1[1);
     },
     set2: () => {
       tp.wp.loc_2 = [parseInt(top.LocX), parseInt(top.LocY)];
+      domes("Waypoint has been set to " + tp.wp.loc_2[0] + "," + tp.wp.loc_2[1]);
     },
     set3: () => {
       tp.wp.loc_3 = [parseInt(top.LocX), parseInt(top.LocY)];
+      domes("Waypoint has been set to " + tp.wp.loc_3[0] + "," + tp.wp.loc_3[1);
     },
     set4: () => {
       tp.wp.loc_4 = [parseInt(top.LocX), parseInt(top.LocY)];
+      domes("Waypoint has been set to " + tp.wp.loc_4[0] + "," + tp.wp.loc_4[1);
     },
   }
 }

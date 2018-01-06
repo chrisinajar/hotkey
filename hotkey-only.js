@@ -5,7 +5,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 9.4",
+  version: "Version: 9.5",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
@@ -225,15 +225,19 @@ var tp = {
     },
     set1: () => {
       tp.wp.loc_1 = [parseInt(top.LocX), parseInt(top.LocY)];
+      domes("Waypoint has been set to " + tp.wp.loc_1[0] + "," + tp.wp.loc_1[1]);
     },
     set2: () => {
       tp.wp.loc_2 = [parseInt(top.LocX), parseInt(top.LocY)];
+      domes("Waypoint has been set to " + tp.wp.loc_2[0] + "," + tp.wp.loc_2[1]);
     },
     set3: () => {
       tp.wp.loc_3 = [parseInt(top.LocX), parseInt(top.LocY)];
+      domes("Waypoint has been set to " + tp.wp.loc_3[0] + "," + tp.wp.loc_3[1]);
     },
     set4: () => {
       tp.wp.loc_4 = [parseInt(top.LocX), parseInt(top.LocY)];
+      domes("Waypoint has been set to " + tp.wp.loc_4[0] + "," + tp.wp.loc_4[1]);
     },
   }
 }
@@ -1191,7 +1195,7 @@ setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
   log('Keybindings Loaded ' + p.version + ' <a target="_blank" href="http://rwkhelp.com/changelog.html">Changelog</a> New Help Page: <a target="_blank" href="http://rwkhelp.com/hotkeys.html">Help</a>', 3);
-  log(`Updated Equipment Menus, included new feature /cc (clears chat), Removing old functions`, 2);
+  log(`9.5 includes 2 bug fixes, and an update to teleporting waypoints.`, 2);
   log(`<font color='orange'>PM from <a href="javascript:pm('Anubis');">Anubis</a>: Hey ${top.login}! Thanks for using my addon. To report any issues please send me a pm and I will address it asap. </font>`, 2);
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
@@ -1321,18 +1325,12 @@ var fn = {
     Move(5);
   }, //221
   Beast: () => { //Beast bane 66
+    tp.wp.set4();
     genfull("chat", "/bb", 0);
-    let wp = top.LocX + "," + top.LocZ + "," + top.LocY;
-    p.pwps[3] = wp;
-    log(`Waypoint 4 set to ${wp}`, 0);
-    document.getElementById("pwp4").value = "Goto " + wp;
   },
   NBeast: () => { //Beast noob bane 78
+    tp.wp.set4();
     genfull("chat", "/bnb", 0);
-    let wp = top.LocX + "," + top.LocZ + "," + top.LocY;
-    p.pwps[3] = wp;
-    log(`Waypoint 4 set to ${wp}`, 0);
-    document.getElementById("pwp4").value = "Goto " + wp;
   },
   //Menus
   Equip: () => { //opens equipment menu 69
@@ -1501,7 +1499,7 @@ var fn = {
     }
   },
   //Keybinds
-  Process: (x) => {
+  Process: (x, event) => {
     switch (x) {
       case 16:
         fn.Submit();
