@@ -281,6 +281,10 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = msg.replace(/:adumb:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg">');
         upchat("");
       }
+      if (msg.toLowerCase().indexOf(":migs:") > -1) {
+        top.OldChat[x] = msg.replace(/:migs:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/tLkj3x1.png">');
+        upchat("");
+      }
     }
   }
 }, 500);
