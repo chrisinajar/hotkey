@@ -1783,7 +1783,7 @@ function upinventory(shouldi, ughi) {
     } else if ([1, 3, 4, 5, 7, 8, 20, 22, 23, 24, 25].includes(itype)) {
       g.other.innerHTML = `<option value=0>Auto</option>`;
     } else if ([0, 2, 12, 13, 14, 15, 16, 21].includes(itype)) {
-      g.other.innerHTML = `<option value=1>Right Hand</option> <option value=2>Left Hand</option>`;
+      g.other.innerHTML = `<option value=1>Left Hand</option> <option value=2>Right Hand</option>`;
       if (top.Weapon == "-1" && top.Shield != "-1") {
         g.other.value = 1;
       } else if (top.Weapon != "-1" && top.Shield == "-1") {
