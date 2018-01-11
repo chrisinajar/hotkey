@@ -18,7 +18,8 @@ var p = {
   ],
   current_inventory: [],
   current_inventory_length: 0,
-  max_inventory: 50
+  max_inventory: 50,
+  binds: [16, 17, 37, 38, 39, 40, 46, 65, 66, 67, 68, 69, 70, 73, 74, 75, 76, 78, 80, 81, 82, 83, 84, 85, 86, 88, 96, 119, 186, 191, 192, 219, 221, 220, 222]
 };
 
 var tp = {
@@ -1446,12 +1447,10 @@ var fn = {
   },
   //Keybinds
   Process: (event) => {
-    console.log(event.keyCode);
-    if([16, 17, 37, 38, 39, 40, 46, 65, 66, 67, 68, 69, 70, 73, 74, 75, 76, 78].includes(event.keyCode)){
+    if(p.binds.includes(event.keyCode)){
       event.preventDefault();
     }
-    x = event.keyCode();
-    switch (x) {
+    switch (event.keyCode) {
       case 16:
         fn.Submit();
         break;
