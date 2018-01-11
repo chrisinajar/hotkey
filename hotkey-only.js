@@ -5,7 +5,7 @@ var p = {
   is_hidden: false,
   stat_display: false,
   Timestamps: false,
-  version: "Version: 9.6",
+  version: "Version: 9.7",
   Hiding_Locs: false,
   Rune_Bank: undefined,
   Safety: false,
@@ -1142,7 +1142,7 @@ setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
   log('Keybindings Loaded ' + p.version + ' <a target="_blank" href="http://rwkhelp.com/changelog.html">Changelog</a> New Help Page: <a target="_blank" href="http://rwkhelp.com/hotkeys.html">Help</a>', 3);
-  log(`9.6 includes 3 bug fixes, and an update to teleporting waypoints, Personal waypoints are fixed as well.`, 2);
+  log(`9.7 is a bug fix for keybinds causing page movement.`, 2);
   log(`<font color='orange'>PM from <a href="javascript:pm('Anubis');">Anubis</a>: Hey ${top.login}! Thanks for using my addon. To report any issues please send me a pm and I will address it asap. </font>`, 2);
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
