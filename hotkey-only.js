@@ -585,7 +585,7 @@ function check_Cards() {
   document.getElementById('Poker_Cards').innerHTML = card_html;
 }
 
-var thinger = document.chat.target.addEventListener("click", function() {
+var thinger = document.chat.target.addEventListener("focus", function() {
   kb_toggle();
 })
 
