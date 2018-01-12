@@ -317,40 +317,6 @@ function setBank() {
   }
 }
 
-function load_new() {
-  delete document.head.lastChild;
-  document.getElementById('addon').parentNode.parentNode.removeChild(document.getElementById('addon').parentNode);
-  keybinder = removeEventListener("keydown", (event) => {}, false);
-  chatmodder = clearInterval(chatmodder);
-  window.alert = null;
-  top.hotlist = [
-    "NOBODY",
-    "Rune+Keeper",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R",
-    "R"
-  ];
-  setTimeout(() => {
-    document.head.appendChild(document.createElement('script'));
-    document.head.lastChild.src = 'https://s3.amazonaws.com/rwk-assets/hotkey-only.js';
-  }, 500);
-}
-
 var mainLoad = (function() {
   document.getElementsByTagName('tbody')[1].innerHTML = `<tbody>
   <tr>
