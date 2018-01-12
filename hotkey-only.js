@@ -1440,11 +1440,7 @@ var fn = {
     genfun("pfold");
   },
   Reload: () => { //Folds poker hand
-    if (confirm("Reload addon?")) {
-      load_new();
-    } else {
-      log('Reloading aborted');
-    }
+    domes("Relaoding has been disabled due to new features implemented in rwk. You must relog for changes. Sorry!");
   },
   //Keybinds
   Process: (event) => {
