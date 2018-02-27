@@ -707,10 +707,10 @@ function essences() {
 
 setTimeout(function() {
   genfull('chat', '/dis', 0);
-  maxInv();
   curInv();
   domes('Keybindings Loaded ' + p.version + ' I appreciate everyone using my addon for the past 10 months. The hotkeys have been removed, and some errors have been fixed. I will not be updating this in the future unless Jeff adds the features to the game. Thank you for the kind words and support, Anubis.');
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
   upbuttons();
-}, 200);
+  maxInv();
+}, 500);
