@@ -3,6 +3,9 @@
 var p = {
   version: "Version: 10 (Final)",
   pwps: [0, 0, 0, 0],
+  current_inventory: [],
+  current_inventory_length: 0,
+  max_inventory: 50,
 };
 
 var tp = {
@@ -260,6 +263,77 @@ var chatmodder = setInterval(() => {
 
 
 var mainLoad = (function() {
+  document.getElementsByTagName('tbody')[1].innerHTML = `<tbody>
+  <tr>
+    <td width="0" height="0"><img border="0" src="../corner.jpg" width="10" height="10"></td>
+    <td background="../top.jpg" align="center" colspan="4"><img border="0" src="../top.jpg" width="44" height="10"></td>
+    <td width="0" height="0"><img border="0" src="../corner.jpg" width="10" height="10"></td>
+  </tr>
+  <tr>
+    <td background="../side.jpg" rowspan="5"><img border="0" src="../side.jpg" width="10" height="44"></td>
+    <td width="25%" bgcolor="0"> <span id="s_name">${top.login}</span> <a target="_blank" href="../info.htm#lev">Lev</a>: <span id="s_login">${top.Level}</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#loc">Loc</a>: <span id="s_Loc">${top.Loc}</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#gold">Gold</a>: <span id="s_Gold">${mc(top.Gold)}</span></td>
+    <td width="25%" bgcolor="0">
+      <span id="s_Exp">
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <td width="0" bgcolor="0"><img border="0" height="15" width="11" src="../ml.jpg"></td>
+              <td width="0%" background="../mfy.jpg" align="right"></td>
+              <td width="100%" background="../mee.jpg"></td>
+              <td width="0" bgcolor="0"><img border="0" height="15" width="11" src="../mr.jpg"></td>
+            </tr>
+          </tbody>
+        </table>
+      </span>
+    </td>
+    <td
+      background="../side.jpg" rowspan="5"><img border="0" src="../side.jpg" width="10" height="44"></td>
+  </tr>
+  <tr>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#str">Str</a>: <span id="s_Str">${mc(top.Str)}</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#dex">Dex</a>: <span id="s_Dex">${mc(top.Dex)}</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#agi">Agi</a>: <span id="s_Agi">${mc(top.Agi)}</span></td>
+    <td width="25%" bgcolor="0">
+      <span id="s_Level">
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <td width="0" bgcolor="0"><img border="0" height="15" width="11" src="../ml.jpg"></td>
+              <td width="0%" background="../mfa.jpg" align="right"></td>
+              <td width="100%" background="../mee.jpg"></td>
+              <td width="0" bgcolor="0"><img border="0" height="15" width="11" src="../mr.jpg"></td>
+            </tr>
+          </tbody>
+        </table>
+      </span>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#dur">Dur</a>: <span id="s_Dur">${mc(top.Dur)}</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#ntl">Ntl</a>: <span id="s_Ntl">${mc(top.Ntl)}</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#cnc">Cnc</a>: <span id="s_Cnc">${mc(top.Cnc)}</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#cnt">Cnt</a>: <span id="s_Cnt">${mc(top.Cnt)}</span></td>
+  </tr>
+  <tr>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://rwkservice.com/quests.htm#treasures">Inventory Counts</a>: </td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://rwkservice.com/quests.htm#treasures">EEoT</a>: <span id="s_Eeot">0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://rwkservice.com/quests.htm#treasures">EEoGT</a>: <span id="s_Eeogt">0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://rwkservice.com/quests.htm#treasures">EEoST</a>: <span id="s_Eeost">0</span></td>
+  </tr>
+  <tr>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="https://www.reddit.com/r/rwk/comments/6m8lux/the_forge_major_update/">Space</a>: <span id="inv_Space"> </span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="https://www.reddit.com/r/rwk/comments/6m8lux/the_forge_major_update/">Ruby</a>: <span id="s_Ruby">0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="https://www.reddit.com/r/rwk/comments/6m8lux/the_forge_major_update/">Emerald</a>: <span id="s_Emerald">0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="https://www.reddit.com/r/rwk/comments/6m8lux/the_forge_major_update/">Sapphire</a>: <span id="s_Sapphire">0</span></td>
+  </tr>
+  <tr>
+    <td width="0" height="0"><img border="0" src="../corner.jpg" width="10" height="10"></td>
+    <td background="../top.jpg" align="center" colspan="4"><img border="0" src="../top.jpg" width="44" height="10"></td>
+    <td width="0" height="0"><img border="0" src="../corner.jpg" width="10" height="10"></td>
+  </tr>
+  </tbody>`
   let abc = document.getElementsByTagName('table')[0].childNodes[0];
   let xxz = document.getElementsByTagName('table')[0].childNodes[0].childNodes[2];
   abc.insertBefore(document.createElement("tr"), xxz);
@@ -493,9 +567,150 @@ function log(message, log_level) {
   upchat('');
 }
 
+function upbuttons() {
+  let tempstr = "";
+
+  if (top.RJ)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"rjack\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card24.gif'> ";
+  if (top.BJ)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bjack\") title='Ultra Resist Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card50.gif'> ";
+  if (top.RQ)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"rqueen\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card25.gif'> ";
+  if (top.BQ)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bqueen\") title='Negate Resist Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card51.gif'> ";
+  if (top.RK)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"rking\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card26.gif'> ";
+  if (top.BK)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bking\") title='Ultra Revive Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card52.gif'> ";
+  if (top.RA)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"race\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card14.gif'> ";
+  if (top.BA)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bace\") title='Ultra Crit Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card40.gif'> ";
+
+  if (tempstr != "")
+    tempstr = "<img border=0 src='" + top.y + "c.gif' height=8 width=8><img border=0 src='" + top.y + "ButDash.gif'><img border=0 src='" + top.y + "c.gif' height=8 width=8>" + tempstr;
+
+
+  top.frames.main.s_HotCards.innerHTML = tempstr;
+  tempstr = "";
+
+  let yes = 0;
+
+  if (top.Exp >= 100) {
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(0) " + top.hio;
+    if (top.HotLevel == 1) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButStr.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(1) " + top.hio;
+    if (top.HotLevel == 2) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButDex.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(2) " + top.hio;
+    if (top.HotLevel == 3) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButAgi.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(3) " + top.hio;
+    if (top.HotLevel == 4) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButDur.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(4) " + top.hio;
+    if (top.HotLevel == 5) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButNtl.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(5) " + top.hio;
+    if (top.HotLevel == 6) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButCnc.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(6) " + top.hio;
+    if (top.HotLevel == 7) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButCnt.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(7) " + top.hio;
+    if (top.HotLevel == 8) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButAll.jpg'>";
+    yes = 1;
+  }
+  if (top.Health <= 0) {
+    if (yes) tempstr += "<br>";
+    yes = 1;
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=revive() " + top.hio + "border=0 src='" + top.y + "ButRevive.jpg'>";
+  }
+
+  if (top.Target != -1) {
+    if (yes) tempstr += "<br>";
+    yes = 1;
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"attack\") border=0" + top.hio + "src='" + top.y + "ButAttack.jpg' title='Attack With Both Weapons'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"cast\") border=0" + top.hio + "src='" + top.y + "ButCast.jpg' title='Cast With Both Spells'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"lattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid1.jpg' title='Left Weapon and Spell'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"rattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid2.jpg' title='Right Weapon and Spell'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"defend\") border=0" + top.hio + "src='" + top.y + "ButDefend.jpg' title='Defend'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+
+    tempstr += " <img border=0 src='" + top.y + "ButVs.jpg'> <a href=javascript:pm('" + mp(top.Target) + "')>" + getcreature(top.Target) + "</a>";
+  }
+
+  top.frames.main.s_FightWin.innerHTML = tempstr;
+  curInv();
+  essences();
+}
+
+function curInv() {
+  p.current_inventory = top.Inventory.split("-").filter(e => String(e).trim());
+  p.current_inventory_length = top.Inventory.split("-").filter(e => String(e).trim()).length;
+  document.getElementById("inv_Space").innerHTML = `${p.current_inventory_length}/${p.max_inventory}`;
+};
+
+function maxInv() {
+  if (p.current_inventory.includes("11042") || p.current_inventory.includes("11050")) {
+    p.max_inventory = 75;
+  }
+  if (p.current_inventory.includes("11082") || p.current_inventory.includes("11087")) {
+    p.max_inventory = 90;
+  }
+  document.getElementById("inv_Space").innerHTML = `${p.current_inventory_length}/${p.max_inventory}`;
+}
+
+function essences() {
+  let eeot = 0;
+  let eeogt = 0;
+  let eeost = 0;
+  let ruby = 0;
+  let sapphire = 0;
+  let emerald = 0;
+  for (let i in top.inventory) {
+    switch (parseInt(top.inventory[i])) {
+      case 27018:
+        eeot++;
+        break;
+      case 27019:
+        eeogt++;
+        break;
+      case 27030:
+        eeost++;
+        break;
+      case 27027:
+        ruby++;
+        break;
+      case 27028:
+        sapphire++;
+        break;
+      case 27029:
+        emerald++;
+        break;
+      case 27031:
+        ruby += 32;
+        break;
+      case 27032:
+        sapphire += 32;
+        break;
+      case 27033:
+        emerald += 32;
+        break;
+    }
+  }
+  document.getElementById('s_Eeot').innerHTML = eeot;
+  document.getElementById('s_Eeogt').innerHTML = eeogt;
+  document.getElementById('s_Eeost').innerHTML = eeost;
+  document.getElementById('s_Ruby').innerHTML = ruby;
+  document.getElementById('s_Sapphire').innerHTML = sapphire;
+  document.getElementById('s_Emerald').innerHTML = emerald;
+}
+
 setTimeout(function() {
   genfull('chat', '/dis', 0);
-  domes('Keybindings Loaded ' + p.version + ' Hotkeys have been removed. Waypoints will stay. Thank you for using my hotkeys.');
+  maxInv();
+  curInv();
+  domes('Keybindings Loaded ' + p.version + ' I appreciate everyone using my addon for the past 10 months. The hotkeys have been removed, and some errors have been fixed. I will not be updating this in the future unless Jeff adds the features to the game. Thank you for the kind words and support, Anubis.');
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
+  upbuttons();
 }, 200);
