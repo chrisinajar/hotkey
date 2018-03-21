@@ -257,6 +257,30 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = msg.replace(/:migs:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/tLkj3x1.png">');
         upchat("");
       }
+      if (msg.toLowerCase().indexOf(":hevmap:") > -1) {
+        top.OldChat[x] = msg.replace(/:hevmap:/gi, '<img width="300px" height="300px" src="http://rwk2.racewarkingdoms.com/Hev.bmp">');
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":skymap:") > -1) {
+        top.OldChat[x] = msg.replace(/:skymap:/gi, '<img width="300px" height="300px" src="http://rwk2.racewarkingdoms.com/Sky.bmp">');
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":surmap:") > -1) {
+        top.OldChat[x] = msg.replace(/:surmap:/gi, '<img width="300px" height="300px" src="http://rwk2.racewarkingdoms.com/Sur.bmp">');
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":dunmap:") > -1) {
+        top.OldChat[x] = msg.replace(/:dunmap:/gi, '<img width="300px" height="300px" src="http://rwk2.racewarkingdoms.com/Dun.bmp">');
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":helmap:") > -1) {
+        top.OldChat[x] = msg.replace(/:helmap:/gi, '<img width="300px" height="300px" src="http://rwk2.racewarkingdoms.com/Hel.bmp">');
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":formap:") > -1) {
+        top.OldChat[x] = msg.replace(/:formap:/gi, '<img width="300px" height="300px" src="http://rwk2.racewarkingdoms.com/For.bmp">');
+        upchat("");
+      }
     }
   }
 }, 500);
