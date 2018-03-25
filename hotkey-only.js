@@ -439,7 +439,7 @@ var mainLoad = (function() {
                              <option value="set1">Set 1</option>
                              <option value="set2">Set 2</option>
                              <option value="set3">Set 3</option>
-                           </select><button onclick="porter(document.getElementById('waypoints').value)">Submit</button>
+                           </select><button onclick="porter(document.getElementById('waypoints').value)">Submit</button> <button onclick="get_equipment()">List Equipment</button>
                           </td>
                         </tr>
                      </table>
@@ -749,3 +749,30 @@ setTimeout(function() {
   upbuttons();
   maxInv();
 }, 500);
+
+function get_equipment() {
+  let temp = [];
+  let current_inventory = {
+    "Relic 6": getitem(top.Relic6),
+    "Relic 5": getitem(top.Relic5),
+    "Relic 4": getitem(top.Relic4),
+    "Relic 3": getitem(top.Relic3),
+    "Relic 2": getitem(top.Relic2),
+    "Relic 1": getitem(top.Relic1),
+    "Right Spell": getitem(top.Heal),
+    "Feet": getitem(top.Boots),
+    "Legs": getitem(top.Leggings),
+    "Left Spell": getitem(top.Cast),
+    "Arms": getitem(top.Sleeves),
+    "Chest": getitem(top.Mantle),
+    "Hands": getitem(top.Gauntlets),
+    "Right Hand": getitem(top.Shield),
+    "Head": getitem(top.Helmet),
+    "Left Hand": getitem(top.Weapon)
+  }
+
+  Object.entries(current_inventory).forEach((data) => {
+    domes(`${data[0]}: ${data[1]}`);
+  });
+  domes("Currently Equipped Items");
+}
