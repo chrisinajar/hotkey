@@ -445,6 +445,49 @@ var mainLoad = (function() {
                      </table>
                      </center>
                      </font>
+                     <center><font color="amber">
+                     <div><b>Crafting Helper</b></div>
+                     Crafting: Item Type: <select id="craft-item-type">
+                        <option selected>Select Item Type</option>
+                        <option value="0">Weapon</option>
+                        <option value="1">Helmet</option>
+                        <option value="2">Shield</option>
+                        <option value="3">Gauntlets</option>
+                        <option value="4">Mantle</option>
+                        <option value="5">Sleeves</option>
+                        <option value="6">Damage Spell</option>
+                        <option value="7">Leggings</option>
+                        <option value="8">Boots</option>
+                        <option value="9">Heal Spell</option>
+                        <option value="10">Relic</option>
+                        <option value="12">Bow</option>
+                        <option value="13">Arrow</option>
+                        <option value="14">Light Weapons</option>
+                        <option value="15">Heavy Weapons</option>
+                        <option value="16">Precise Weapons</option>
+                        <option value="17">Rapid Damage Spells</option>
+                        <option value="18">Major Damage Spells</option>
+                        <option value="19">Accurate Damage Spells</option>
+                        <option value="20">Durability Helmets</option>
+                        <option value="21">Durability Shields</option>
+                        <option value="22">Durability Gauntlets</option>
+                        <option value="23">Durability Mantles</option>
+                        <option value="24">Durability Sleeves</option>
+                        <option value="25">Durability Leggings</option>
+                        <option value="26">Durability Boots</option>
+                        <option value="27">Essence Elements</option>
+                     </select>
+
+                     Item Type: <select id="craft-item-value"> </select>
+
+                     <button onclick="craft()">Craft</button>
+
+                     <br>
+
+                     Destroy Items: <select id='crafted-item-burn'> </select>
+
+                     <button onclick="burn_crafted_item()">Destroy</button>
+                     </font></center>
                      </td>
                   </tr>
                   </table>
@@ -467,6 +510,9 @@ var mainLoad = (function() {
 </td>`;
   document.getElementsByTagName('table')[0].childNodes[0].childNodes[2].innerHTML = xlr;
   chat.target.focus();
+  setTimeout(()=>{
+    update_crafte_items();
+  }, 1500);
 })();
 
 function randomValue(min, max) {
@@ -749,3 +795,500 @@ setTimeout(function() {
   upbuttons();
   maxInv();
 }, 500);
+
+
+setTimeout(() => {
+  document.getElementById("craft-item-type").addEventListener("change", () => {
+    switch (document.getElementById("craft-item-type").value) {
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "7":
+      case "8":
+      case "12":
+      case "13":
+      case "20":
+      case "21":
+      case "22":
+      case "23":
+      case "24":
+      case "25":
+      case "26":
+        document.getElementById('craft-item-value').innerHTML = `<option value=0>Dirty Rag</option>
+           <option value=1>Cloth</option>
+           <option value=2>Woven</option>
+           <option value=3>Lined Mail</option>
+           <option value=4>Bamboo Plate</option>
+           <option value=5>Hardened Bark</option>
+           <option value=6>Tin Platemail</option>
+           <option value=7>Rusty Ringmail</option>
+           <option value=8>Darkskin</option>
+           <option value=9>Copper Scalemail</option>
+           <option value=10>Bloody Iron Plate</option>
+           <option value=11>Silvery Jointed Plate</option>
+           <option value=12>Shiny Ringmail</option>
+           <option value=13>Blackened Scalemail</option>
+           <option value=14>Spiked Guard</option>
+           <option value=15>Etched Adamantine</option>
+           <option value=16>Gold Tipped Lined Mail</option>
+           <option value=17>Heavy Cast Iron</option>
+           <option value=18>Buffed Crystalline</option>
+           <option value=19>Ageless Alchemist Ringmail</option>
+           <option value=20>Spider Silk Woven</option>
+           <option value=21>Shiny Platemail</option>
+           <option value=22>Blackened Mennonite</option>
+           <option value=23>Undead Skinned</option>
+           <option value=24>Regenerating Troll Skin</option>
+           <option value=25>Fire Dragon Scale</option>
+           <option value=26>Molten Ringmail</option>
+           <option value=27>Ice Dragon Scale</option>
+           <option value=28>Magma Pounded Platemail</option>
+           <option value=29>Angel Wing</option>
+           <option value=30>Avenger Shieldskin</option>
+           <option value=31>Aged Crystal</option>
+           <option value=32>Fire Enderamoth</option>
+           <option value=33>Indefinite Protection</option>
+           <option value=34>Cry Ender</option>
+           <option value=35>Cyclop's Eye</option>
+           <option value=36>Unholy Intervention</option>
+           <option value=37>Demon's Horn</option>
+           <option value=38>Elemental Deceit</option>
+           <option value=39>Ultimate Indifference</option>
+           <option value=40>Enamalace Endoskeleton</option>
+           <option value=41>Torment Skin</option>
+           <option value=42>Refolded Diamond Plate</option>
+           <option value=43>Damage Disregarder</option>
+           <option value=44>Impenetrable Lamentation</option>
+           <option value=45>Fortrousness Steelmail</option>
+           <option value=46>Ancient Fortitude</option>
+           <option value=47>Dragon Wing</option>
+           <option value=48>Density Stone Guard</option>
+           <option value=49>Unbreaking Body</option>
+           <option value=50>Ice Forged</option>
+           <option value=51>Melted Crystal</option>
+           <option value=52>Woven Angel Hair</option>
+           <option value=53>Tusk Spiked</option>
+           <option value=54>Mortared Magma</option>
+           <option value=55>Ageless Alkaline</option>
+           <option value=56>Thousand Spun Silk</option>
+           <option value=57>Smelted Carbonite</option>
+           <option value=58>Widow Web</option>
+           <option value=59>Acidified Stone</option>
+           <option value=60>Lipased Enzyme</option>
+           <option value=61>Regretless Mesh</option>
+           <option value=62>Life Vigor</option>
+           <option value=63>Perpetual Ice</option>
+           <option value=64>Virgin Diamond</option>
+           <option value=65>Creedless Cyrosilk</option>
+           <option value=66>Treant Regrowth</option>
+           <option value=67>Petrified Ancientscale</option>
+           <option value=68>Behemoth Skin</option>
+           <option value=69>Timeless Fortitude</option>
+           <option value=70>Perforation Crafted</option>
+           <option value=71>Imbued Perfection</option>
+           <option value=72>Reivived Organismal</option>
+           <option value=73>Clarified Creation</option>
+           <option value=74>Enlightened Everbearing</option>
+           <option value=75>Divine Transcension</option>
+           <option value=76>Staggering Unsurpassment</option>
+           <option value=77>Demon's Adulation</option>
+           <option value=78>Protectant Prevailation</option>
+           <option value=79>Devouring Lifeless Demise</option>
+           </select>`;
+        break;
+
+      case "0":
+      case "14":
+      case "15":
+      case "16":
+        document.getElementById('craft-item-value').innerHTML = `<option value=0>Rusty Dagger</option>
+        <option value=1>Old Knife</option>
+        <option value=2>Broken Short Sword</option>
+        <option value=3>Tarnished Scythe</option>
+        <option value=4>Iron Mallet</option>
+        <option value=5>Long Spear</option>
+        <option value=6>Dull Katana</option>
+        <option value=7>Strong Staff</option>
+        <option value=8>Polished Tusk</option>
+        <option value=9>Bronze Sharpened Dagger</option>
+        <option value=10>Iron Claw</option>
+        <option value=11>Naginata</option>
+        <option value=12>Gold Plated Mallet</option>
+        <option value=13>Etched Scythe</option>
+        <option value=14>Poison Spear</option>
+        <option value=15>Silver Tip Axe</option>
+        <option value=16>Two Handed Battle Axe</option>
+        <option value=17>Shimmering Long Sword</option>
+        <option value=18>Ancient Katana</option>
+        <option value=19>Blackened Pole</option>
+        <option value=20>Crystal Staff</option>
+        <option value=21>Engraved Dragon Bone</option>
+        <option value=22>Bane Claw</option>
+        <option value=23>Imploded Wand</option>
+        <option value=24>Ovaline Double Sword</option>
+        <option value=25>Molten Axe</option>
+        <option value=26>Adversary Avenger Blade</option>
+        <option value=27>Titans Mallet</option>
+        <option value=28>Angel Fang Katana</option>
+        <option value=29>Diamond Scorn Maret</option>
+        <option value=30>Ancient Eye Wand</option>
+        <option value=31>Head Heavy Staff</option>
+        <option value=32>Scythe of Deliverance</option>
+        <option value=33>Angled Razor Sword of Reznor</option>
+        <option value=34>Undercurved Flesh Dispatcher</option>
+        <option value=35>Cane of Tumultuous Torment</option>
+        <option value=36>Axe of the Caged Angel</option>
+        <option value=37>Demon Bone Mace</option>
+        <option value=38>Katana of Ninth Life</option>
+        <option value=39>Sword of Righteous Revenge</option>
+        <option value=40>Mysterious Blade</option>
+        <option value=41>Sword Of Omens</option>
+        <option value=42>Dirk of Dark Magic</option>
+        <option value=43>Rustic Light Shard</option>
+        <option value=44>Eviscerating Eagle Claw</option>
+        <option value=45>Dragon Tail Chain</option>
+        <option value=46>Unforgiving Edge</option>
+        <option value=47>Blackened Dragon Fang</option>
+        <option value=48>Repressed Samurai Sword</option>
+        <option value=49>Elimbinator</option>
+        <option value=50>Crackling Tendril</option>
+        <option value=51>Hammer of Execution</option>
+        <option value=52>Bloodblack Recurve</option>
+        <option value=53>Blackened Reaver</option>
+        <option value=54>Flamberge of Flames</option>
+        <option value=55>Bone Bladed Scythe</option>
+        <option value=56>Unforgiving Flail</option>
+        <option value=57>Brute Chopper</option>
+        <option value=58>Enchanted Battle Staff</option>
+        <option value=59>Rediron Pike</option>
+        <option value=60>Reaping Rapier</option>
+        <option value=61>Poison Barbed Whip</option>
+        <option value=62>Bloodforge Axe</option>
+        <option value=63>Cold Iron Claymore</option>
+        <option value=64>Dwarven Double Edge</option>
+        <option value=65>Bone Serrator</option>
+        <option value=66>Combine Long Sword</option>
+        <option value=67>Whip of Severance</option>
+        <option value=68>Beheaden Blade</option>
+        <option value=69>Rustless Lifeceaser</option>
+        <option value=70>Mace of Resurrection</option>
+        <option value=71>Double Axe of Durability</option>
+        <option value=72>Bloodraker</option>
+        <option value=73>Tension Torqer</option>
+        <option value=74>Sword of Heavenly Ascension</option>
+        <option value=75>Pandemoniums Vociferation</option>
+        <option value=76>Awe Bringer</option>
+        <option value=77>Avengment of the Fallen</option>
+        <option value=78>Angels Eye Piercer</option>
+        <option value=79>Claw of Demon Praise</option>`;
+        break;
+
+      case "9":
+        document.getElementById('craft-item-value').innerHTML = `<option value=0>Minor Sanation</option>
+        <option value=1>Regain Breath</option>
+        <option value=2>Endow Health</option>
+        <option value=3>Summon Breath</option>
+        <option value=4>Aether Heal</option>
+        <option value=5>Unrupture</option>
+        <option value=6>Well of Life</option>
+        <option value=7>White Light</option>
+        <option value=8>Minor Rejuvenation</option>
+        <option value=9>Elemental Breath</option>
+        <option value=10>Regainment</option>
+        <option value=11>Minor Recovery</option>
+        <option value=12>Sanation</option>
+        <option value=13>Regain Energy</option>
+        <option value=14>Pain Forgettence</option>
+        <option value=15>Summon Life</option>
+        <option value=16>Aether Resurrection</option>
+        <option value=17>White Life</option>
+        <option value=18>Elemental Recovery</option>
+        <option value=19>Rejuvenation</option>
+        <option value=20>Summon Angels</option>
+        <option value=21>Major Sanation</option>
+        <option value=22>Regain Resistance</option>
+        <option value=23>Endow Life</option>
+        <option value=24>Undo Harm</option>
+        <option value=25>Strength Remembrance</option>
+        <option value=26>Unbegotten</option>
+        <option value=27>Ceased Suffering</option>
+        <option value=28>Major Rejuvenation</option>
+        <option value=29>Reap Repair</option>
+        <option value=30>Healers Omen</option>
+        <option value=31>Omega Sanation</option>
+        <option value=32>Asuwere</option>
+        <option value=33>Regain Life</option>
+        <option value=34>Effervescence</option>
+        <option value=35>Replenish</option>
+        <option value=36>Total Recall</option>
+        <option value=37>Unending Regeneration</option>
+        <option value=38>Rebirth</option>
+        <option value=39>Breath of Life</option>
+        <option value=40>Retainers Revelation</option>
+        <option value=41>Life Empowerment</option>
+        <option value=42>Angelic Anomaly</option>
+        <option value=43>Forgetful Rendation</option>
+        <option value=44>Disallowed Torment</option>
+        <option value=45>Blinding Whiteness</option>
+        <option value=46>Revelation of Health</option>
+        <option value=47>Arrogant Regainment</option>
+        <option value=48>Unholy Recollection</option>
+        <option value=49>Eternal Enhancement</option>
+        <option value=50>Wings of Support</option>
+        <option value=51>Unbreaking Bones</option>
+        <option value=52>Angelic Wind</option>
+        <option value=53>Adoption</option>
+        <option value=54>Begone Affliction</option>
+        <option value=55>Devil of Lights Curse</option>
+        <option value=56>Eye Glisten</option>
+        <option value=57>Rebel Rehab</option>
+        <option value=58>Rekindled Flame</option>
+        <option value=59>Endall Suffering</option>
+        <option value=60>Blinkback</option>
+        <option value=61>Sorrowless</option>
+        <option value=62>Pains Demise</option>
+        <option value=63>Former State</option>
+        <option value=64>Forced Blood Flow</option>
+        <option value=65>Staggerless Agane</option>
+        <option value=66>Blessing from Below</option>
+        <option value=67>Restoration</option>
+        <option value=68>Ardent Alignment</option>
+        <option value=69>Livagane</option>
+        <option value=70>Healthinator</option>
+        <option value=71>Goshimhappy</option>
+        <option value=72>Healmesoftly</option>
+        <option value=73>Pheelgud</option>
+        <option value=74>Lifeomatic</option>
+        <option value=75>Gadam!</option>
+        <option value=76>Sumholishit</option>
+        <option value=77>Omagawad</option>
+        <option value=78>Heavenly Recirculation</option>
+        <option value=79>Everlasting Aura</option>`;
+        break;
+
+      case "10":
+        document.getElementById('craft-item-value').innerHTML = `<option value="0">Strong Arm</option>
+        <option value="1">Archers Eye</option>
+        <option value="2">Cats Feet</option>
+        <option value="3">Merlins Insight</option>
+        <option value="4">Mental Focus</option>
+        <option value="5">Impediment</option>
+        <option value="6">Priests Touch</option>
+        <option value="7">The Calling of Titus</option>
+        <option value="8">Debilitator</option>
+        <option value="9">Maladroit</option>
+        <option value="10">Dawdle</option>
+        <option value="11">Stupidify</option>
+        <option value="12">Distraction</option>
+        <option value="13">Mind Pierce</option>
+        <option value="14">Touch of the Damned</option>
+        <option value="15">The Calling of Cassius</option>
+        <option value="16">Siphon Strength</option>
+        <option value="17">Stolen Hands</option>
+        <option value="18">Filched Feet</option>
+        <option value="19">Pilfered Intellect</option>
+        <option value="20">Lifted Thoughts</option>
+        <option value="21">Purloinment</option>
+        <option value="22">Blood Pinch</option>
+        <option value="23">The Calling of Lestat</option>
+        <option value="24">Confusion</option>
+        <option value="25">Life Roulette</option>
+        <option value="26">Annulment</option>
+        <option value="27">Damage Shield</option>
+        <option value="28">Damage Capacitor</option>
+        <option value="29">The Calling of Cara</option>
+        <option value="30">Dexterous Hoist</option>
+        <option value="31">Stream of Conscious</option>
+        <option value="32">Blood Bath</option>
+        <option value="33">Vampiric Leech</option>
+        <option value="34">Death Spike</option>
+        <option value="35">Denial of the Believer</option>
+        <option value="56">Encephalon Decay</option>
+        <option value="57">Vogars Vice</option>
+        <option value="40">Unerring Edge</option>
+        <option value="41">Faithful Severity</option>
+        <option value="42">Clarity</option>
+        <option value="43">Mental Virtue</option>
+        <option value="44">Devestation</option>
+        <option value="45">Rectification</option>
+        <option value="46">Allegiance</option>
+        <option value="47">Impetuosity</option>
+        <option value="48">Preservation</option>
+        <option value="49">Monasticism</option>
+        <option value="50">Theurgal Equalizer</option>
+        <option value="60">Voidance</option>
+        <option value="54">Apex</option>
+        <option value="53">Leather of Delegation</option>`;
+        break;
+
+      case "6":
+      case "17":
+      case "18":
+      case "19":
+        document.getElementById('craft-item-value').innerHTML = `<option value=0>Acid Drop</option>
+        <option value="1">Flame Blast</option>
+        <option value="2">Striking Shadows</option>
+        <option value="3">Soulwrack</option>
+        <option value="4">Elemental Invocation</option>
+        <option value="5">Unholy Provocation</option>
+        <option value="6">Frost Whip</option>
+        <option value="7">Flesh Rot</option>
+        <option value="8">Dark Lash</option>
+        <option value="9">Fire Burst</option>
+        <option value="10">Bleeding Pores</option>
+        <option value="11">Vile Curse</option>
+        <option value="12">Crystal Shards</option>
+        <option value="13">Chilling Scythe</option>
+        <option value="14">Meteor Swarm</option>
+        <option value="15">Lightening Arc</option>
+        <option value="16">Flaming Spears</option>
+        <option value="17">Aether Inferno</option>
+        <option value="18">Agonizing Torment</option>
+        <option value="19">Bolt of Death</option>
+        <option value="20">Reaving Relent</option>
+        <option value="21">Brain Decay</option>
+        <option value="22">Mystic Mirage</option>
+        <option value="23">Howl From Below</option>
+        <option value="24">Incineration</option>
+        <option value="25">Regenerating Talons</option>
+        <option value="26">Chaos Hammer</option>
+        <option value="27">Banshee Wail</option>
+        <option value="28">Lightnings Lament</option>
+        <option value="29">Bath of Razors</option>
+        <option value="30">Feast of the Demons</option>
+        <option value="31">Earthen Maw</option>
+        <option value="32">Arcane Vengeance</option>
+        <option value="33">Arctic Chill</option>
+        <option value="34">Hell Fury</option>
+        <option value="35">Spirit Annihilation</option>
+        <option value="36">Frost Gate</option>
+        <option value="37">Mind Shatter</option>
+        <option value="38">Shriek of the Damned</option>
+        <option value="39">Oblivion Orb</option>
+        <option value="40">Obsidian Undershimmer</option>
+        <option value="41">Unrelentious Retribution</option>
+        <option value="42">Lost Souls Suffering</option>
+        <option value="43">Relentless Clouds</option>
+        <option value="44">Scream of the Unending</option>
+        <option value="45">Retribution of the Wronged</option>
+        <option value="46">Brain Boilation</option>
+        <option value="47">Holocaustic Nuke</option>
+        <option value="48">Shattering Blood Rebellion</option>
+        <option value="49">Unholy Derangement</option>
+        <option value="50">Nuke of Nosferatu</option>
+        <option value="51">Belials Calling</option>
+        <option value="52">Nerve Collapse</option>
+        <option value="53">Inner Incineration</option>
+        <option value="54">Eyesplode</option>
+        <option value="55">Spirit Invocation</option>
+        <option value="56">Hades Glimpse</option>
+        <option value="57">Comfortless Pillow</option>
+        <option value="58">Angelic Anguish</option>
+        <option value="59">Demon Summonation</option>
+        <option value="60">Silent Serenity</option>
+        <option value="61">Lucifers Lament</option>
+        <option value="62">Naysay</option>
+        <option value="63">Manifest Corpse</option>
+        <option value="64">Heretic Howl</option>
+        <option value="65">Death Shroud</option>
+        <option value="66">Morbid Provocation</option>
+        <option value="67">Blood Curdle</option>
+        <option value="68">Shriek of Satan</option>
+        <option value="69">Lifeless Growls</option>
+        <option value="70">Sinners Rebirth</option>
+        <option value="71">Body Singe Durability</option>
+        <option value="72">Spirit Bind</option>
+        <option value="73">Eternal Yearning</option>
+        <option value="74">Vivacity Arbitration</option>
+        <option value="75">Boiling Contempt</option>
+        <option value="76">Demons Despisal</option>
+        <option value="77">Disparagement of the Forgotten</option>
+        <option value="78">Hellacious Rebirth</option>
+        <option value="79">Horrendous Defilation</option>`;
+        break;
+    }
+  });
+  update_crafted_items();
+}, 1000);
+
+var fields = {
+  general: {
+    main: document.getElementById("general"),
+    action: document.getElementsByName("action")[0],
+    target: document.getElementsByName("target")[0],
+    other: document.getElementsByName("other")[0],
+    othera: document.getElementsByName("othera")[0],
+    submit: () => {
+      document.getElementById("s_subbut").childNodes[0].click();
+      return true;
+    },
+    upaction: () => {
+      updateaction(fields.general.action.value, fields.general.main);
+      return true;
+    },
+    uptarget: () => {
+      updatetarget(fields.general.action.value, fields.general.target.value, fields.general.main);
+      return true;
+    }
+  },
+  misc: {
+    security: document.getElementById("s_Response"),
+    message: document.getElementById("s_FightWin")
+  }
+};
+
+function craft() {
+  fields.general.action.value = "ts";
+  fields.general.upaction();
+  fields.general.target.value = document.getElementById("craft-item-type").value;
+  fields.general.uptarget();
+  fields.general.other.value = document.getElementById("craft-item-value").value;
+  fields.general.submit();
+  setTimeout(() => {
+    update_crafted_items();
+  }, 250)
+}
+
+function update_crafted_items() {
+  let equipped_items = [
+    top.Weapon,
+    top.Shield,
+    top.Cast,
+    top.Heal,
+    top.Helmet,
+    top.Mantle,
+    top.Sleeves,
+    top.Leggings,
+    top.Boots,
+    top.Gauntlets
+  ];
+  let relics = [
+    36, 37, 38, 39, 51, 52, 56, 58, 59, 64, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79,
+    81, 82, 83, 84, 85, 86, 87, 88
+  ];
+  let temp = ``;
+  let inventory = top.Inventory.split("-").filter(e => String(e).trim());
+  for (let value of inventory) {
+    if (getitem(value).indexOf("*") < 0) {
+      let relic = Math.floor(parseInt(value - 10000));
+      if (!relics.includes(relic)) {
+        if (parseInt(value / 1000, 10) % 100 !== 11 && parseInt(value / 1000, 10) % 100 !== 27) {
+          temp += `<option value=${value}>${getitem(value)}</option>`;
+        }
+      }
+    }
+  }
+  document.getElementById('crafted-item-burn').innerHTML = temp;
+}
+
+function burn_crafted_item() {
+  let item = document.getElementById('crafted-item-burn').value;
+  if (item != undefined) {
+    burnit(item);
+  }
+  setTimeout(() => {
+    update_crafted_items();
+  }, 250)
+}
