@@ -478,7 +478,9 @@ var mainLoad = (function() {
                         <option value="27">Essence Elements</option>
                      </select>
 
-                     Item Type: <select id="craft-item-value"> </select>
+                     Item: <select id="craft-item-value">
+                     <option selected>Please Select Type</option>
+                     </select>
 
                      <button onclick="craft()">Craft</button>
 
