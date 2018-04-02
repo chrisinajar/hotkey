@@ -1210,6 +1210,13 @@ setTimeout(() => {
         <option value="78">Hellacious Rebirth</option>
         <option value="79">Horrendous Defilation</option>`;
         break;
+
+      case "27":
+        document.getElementById('craft-item-value').innerHTML = `<option value="18">Essence Element of Treasure</option>
+        <option value="19">Essence Element of Great Treasure</option>
+        <option value="30">Essence Element of Superior Treasure</option>`;
+        break;
+
     }
   });
   update_crafted_items();
@@ -1301,7 +1308,7 @@ function burn_crafted_item() {
   if (item != undefined) {
     burnit(item);
   }
-  setTimeout(()=>{
+  setTimeout(() => {
     update_crafted_items(item);
   }, 250);
 }
