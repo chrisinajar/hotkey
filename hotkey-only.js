@@ -722,6 +722,7 @@ function upbuttons() {
   }
 
   top.frames.main.s_FightWin.innerHTML = tempstr;
+  maxInv();
   curInv();
   essences();
 }
