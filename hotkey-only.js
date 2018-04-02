@@ -1250,7 +1250,7 @@ function craft() {
   fields.general.submit();
   setTimeout(() => {
     update_crafted_items();
-  }, 1000);
+  }, 250);
 }
 
 function update_crafted_items(itemval) {
@@ -1292,7 +1292,7 @@ function update_crafted_items(itemval) {
           break;
         }
       }
-    }, 500);
+    }, 250);
   }
 }
 
