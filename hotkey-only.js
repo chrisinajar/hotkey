@@ -512,7 +512,7 @@ var mainLoad = (function() {
 </td>`;
   document.getElementsByTagName('table')[0].childNodes[0].childNodes[2].innerHTML = xlr;
   chat.target.focus();
-  setTimeout(()=>{
+  setTimeout(() => {
     update_crafted_items();
   }, 1500);
 })();
@@ -1250,10 +1250,10 @@ function craft() {
   fields.general.submit();
   setTimeout(() => {
     update_crafted_items();
-  }, 125);
+  }, 1000);
 }
 
-function update_crafted_items() {
+function update_crafted_items(itemval) {
   let equipped_items = [
     top.Weapon,
     top.Shield,
@@ -1283,6 +1283,17 @@ function update_crafted_items() {
     }
   }
   document.getElementById('crafted-item-burn').innerHTML = temp;
+  if (arguments[0] != undefined) {
+    setTimeout(() => {
+      let options = document.getElementById('crafted-item-burn').options;
+      for (let option of options) {
+        if (option.value == arguments[0]) {
+          document.getElementById('crafted-item-burn').value = arguments[0];
+          break;
+        }
+      }
+    }, 500);
+  }
 }
 
 function burn_crafted_item() {
@@ -1290,8 +1301,7 @@ function burn_crafted_item() {
   if (item != undefined) {
     burnit(item);
   }
-  update_crafted_items();
   setTimeout(()=>{
-    document.getElementById('crafted-item-burn').value = item;
-  }, 150);
+    update_crafted_items(item);
+  }, 250);
 }
