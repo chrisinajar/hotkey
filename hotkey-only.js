@@ -1250,7 +1250,7 @@ function craft() {
   fields.general.submit();
   setTimeout(() => {
     update_crafted_items();
-  }, 250)
+  }, 125);
 }
 
 function update_crafted_items() {
@@ -1290,10 +1290,8 @@ function burn_crafted_item() {
   if (item != undefined) {
     burnit(item);
   }
-  setTimeout(() => {
-    update_crafted_items();
-  }, 250)
+  update_crafted_items();
   setTimeout(()=>{
     document.getElementById('crafted-item-burn').value = item;
-  }, 350);
+  }, 150);
 }
