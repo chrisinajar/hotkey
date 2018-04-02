@@ -513,7 +513,7 @@ var mainLoad = (function() {
   document.getElementsByTagName('table')[0].childNodes[0].childNodes[2].innerHTML = xlr;
   chat.target.focus();
   setTimeout(()=>{
-    update_crafte_items();
+    update_crafted_items();
   }, 1500);
 })();
 
@@ -1293,4 +1293,7 @@ function burn_crafted_item() {
   setTimeout(() => {
     update_crafted_items();
   }, 250)
+  setTimeout(()=>{
+    document.getElementById('crafted-item-burn').value = item;
+  }, 350);
 }
