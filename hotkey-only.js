@@ -727,6 +727,7 @@ function upbuttons() {
   }
 
   top.frames.main.s_FightWin.innerHTML = tempstr;
+  maxInv();
   curInv();
   essences();
   update_crafted_items();
@@ -1216,6 +1217,13 @@ setTimeout(() => {
         <option value="78">Hellacious Rebirth</option>
         <option value="79">Horrendous Defilation</option>`;
         break;
+
+      case "27":
+        document.getElementById('craft-item-value').innerHTML = `<option value="18">Essence Element of Treasure</option>
+        <option value="19">Essence Element of Great Treasure</option>
+        <option value="30">Essence Element of Superior Treasure</option>`;
+        break;
+
     }
   });
   update_crafted_items();
@@ -1256,7 +1264,7 @@ function craft() {
   fields.general.submit();
   setTimeout(() => {
     update_crafted_items();
-  }, 1000);
+  }, 250);
 }
 
 function update_crafted_items(itemval) {
@@ -1301,7 +1309,7 @@ function update_crafted_items(itemval) {
           break;
         }
       }
-    }, 500);
+    }, 250);
   }
 }
 
@@ -1310,7 +1318,7 @@ function burn_crafted_item() {
   if (item != undefined) {
     burnit(item);
   }
-  setTimeout(()=>{
+  setTimeout(() => {
     update_crafted_items(item);
   }, 250);
 }
