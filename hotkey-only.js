@@ -1272,19 +1272,19 @@ function update_crafted_items(itemval) {
     36, 37, 38, 39, 51, 52, 56, 58, 59, 64, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79,
     81, 82, 83, 84, 85, 86, 87, 88
   ];
-  if(document.getElementById('hide-dotb').checked == true){
+  if (document.getElementById('hide-dotb').checked == true) {
     relics.push(35);
   }
-  if(document.getElementById('hide-bp').checked == true){
+  if (document.getElementById('hide-bp').checked == true) {
     relics.push(22);
   }
-  if(document.getElementById('hide-apex').checked == true){
+  if (document.getElementById('hide-apex').checked == true) {
     relics.push(54);
   }
-  if(document.getElementById('hide-lod').checked == true){
+  if (document.getElementById('hide-lod').checked == true) {
     relics.push(53);
   }
-  if(document.getElementById('hide-soc').checked == true){
+  if (document.getElementById('hide-soc').checked == true) {
     relics.push(31);
   }
   let temp = ``;
