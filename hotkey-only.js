@@ -445,8 +445,8 @@ var mainLoad = (function() {
                      </table>
                      </center>
                      </font>
-                     <center><font color="amber">
-                     <div><b>Crafting Helper</b></div>
+                     <center>
+                     <div>Crafting Helper</div>
                      Crafting: Item Type: <select id="craft-item-type">
                         <option selected>Select Item Type</option>
                         <option value="0">Weapon</option>
@@ -488,8 +488,13 @@ var mainLoad = (function() {
 
                      Destroy Items: <select id='crafted-item-burn'> </select>
 
-                     <button onclick="burn_crafted_item()">Destroy</button>
-                     </font></center>
+                     <button onclick="burn_crafted_item()">Destroy</button> <br>
+                     Hide: <label>DOTB<input type='checkbox' id="hide-dotb" onclick="update_crafted_items();"></label>
+                           <label>BP<input type='checkbox' id="hide-bp" onclick="update_crafted_items();"></label>
+                           <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();"></label>
+                           <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();"></label>
+                           <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
+                     </center>
                      </td>
                   </tr>
                   </table>
@@ -724,6 +729,7 @@ function upbuttons() {
   top.frames.main.s_FightWin.innerHTML = tempstr;
   curInv();
   essences();
+  update_crafted_items();
 }
 
 function curInv() {
@@ -1254,27 +1260,30 @@ function craft() {
 }
 
 function update_crafted_items(itemval) {
-  let equipped_items = [
-    top.Weapon,
-    top.Shield,
-    top.Cast,
-    top.Heal,
-    top.Helmet,
-    top.Mantle,
-    top.Sleeves,
-    top.Leggings,
-    top.Boots,
-    top.Gauntlets
-  ];
   let relics = [
     36, 37, 38, 39, 51, 52, 56, 58, 59, 64, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79,
     81, 82, 83, 84, 85, 86, 87, 88
   ];
+  if(document.getElementById('hide-dotb').checked == true){
+    relics.push(35);
+  }
+  if(document.getElementById('hide-bp').checked == true){
+    relics.push(22);
+  }
+  if(document.getElementById('hide-apex').checked == true){
+    relics.push(54);
+  }
+  if(document.getElementById('hide-lod').checked == true){
+    relics.push(53);
+  }
+  if(document.getElementById('hide-soc').checked == true){
+    relics.push(31);
+  }
   let temp = ``;
   let inventory = top.Inventory.split("-").filter(e => String(e).trim());
   for (let value of inventory) {
-    if (getitem(value).indexOf("*") < 0) {
-      let relic = Math.floor(parseInt(value - 10000));
+    if (getitem(value).indexOf("*") < 0 && parseInt(value % 1000, 10) < 79) {
+      let relic = Math.floor(parseInt(value - 10000, 10));
       if (!relics.includes(relic)) {
         if (parseInt(value / 1000, 10) % 100 !== 11 && parseInt(value / 1000, 10) % 100 !== 27) {
           temp += `<option value=${value}>${getitem(value)}</option>`;
