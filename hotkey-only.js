@@ -390,7 +390,7 @@ var mainLoad = (function() {
                <img border="0" src="../dragon.jpg">
             </td>
             <td width="100%" bgcolor="0">
-               <table width="100%" style='text-align:center; color:orange'>
+               <table width="100%" style='text-align:center;'>
                   <tr id='tb_1'>
                      <td>
                      <center>
@@ -489,10 +489,10 @@ var mainLoad = (function() {
                      Destroy Items: <select id='crafted-item-burn'> </select>
 
                      <button onclick="burn_crafted_item()">Destroy</button> <br>
-                     Hide: <label>DOTB<input type='checkbox' id="hide-dotb" onclick="update_crafted_items();"></label>
-                           <label>BP<input type='checkbox' id="hide-bp" onclick="update_crafted_items();"></label>
-                           <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();"></label>
-                           <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();"></label>
+                     Hide: <label>DOTB<input type='checkbox' id="hide-dotb" onclick="update_crafted_items();" checked></label>
+                           <label>BP<input type='checkbox' id="hide-bp" onclick="update_crafted_items();" checked></label>
+                           <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
+                           <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
                      </center>
                      </td>
