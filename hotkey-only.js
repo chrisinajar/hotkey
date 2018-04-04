@@ -730,7 +730,6 @@ function upbuttons() {
   maxInv();
   curInv();
   essences();
-  update_crafted_items();
 }
 
 function curInv() {
