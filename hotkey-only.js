@@ -246,7 +246,7 @@ var chatmodder = setInterval(() => {
         //alert("You've been banned.");
       }
       if (msg.toLowerCase().indexOf(":banjeff:") > -1) {
-        top.OldChat[x] = `<font color='#C89468'>Ash Collector</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        top.OldChat[x] = `<b><font color='#C89468'>Glitchless</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font></b>`;
         upchat("");
         //alert("You've been banned.");
       }
