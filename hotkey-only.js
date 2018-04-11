@@ -234,9 +234,21 @@ var chatmodder = setInterval(() => {
     if (top.OldChat[x] != "") {
       let msg = top.OldChat[x];
       if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
-        top.OldChat[x] = `<font color='#C89468'>${top.login}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        let upperletter = top.login.substring(0, 1).toUpperCase();
+        let lowername = top.login.substring(1, top.login.length);
+        top.OldChat[x] = `<font color='#C89468'>${upperletter + lowername}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
-        alert("You've been banned.");
+        //alert("You've been banned.");
+      }
+      if (msg.toLowerCase().indexOf(":banac:") > -1) {
+        top.OldChat[x] = `<font color='#C89468'>Ash Collector</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        upchat("");
+        //alert("You've been banned.");
+      }
+      if (msg.toLowerCase().indexOf(":banjeff:") > -1) {
+        top.OldChat[x] = `<font color='#C89468'>Ash Collector</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        upchat("");
+        //alert("You've been banned.");
       }
       if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
         top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
