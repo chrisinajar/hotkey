@@ -233,6 +233,11 @@ var chatmodder = setInterval(() => {
   for (let x = 0; x <= 4; x++) {
     if (top.OldChat[x] != "") {
       let msg = top.OldChat[x];
+      if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
+        top.OldChat[x] = `<font color='#C89468'>${top.login}</font> <font color='#FCFF11>has been smitten! ... and there was much rejoicing</font>`);
+        alert("You've been banned.");
+        upchat("");
+      }
       if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
         top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
         upchat("");
@@ -294,7 +299,7 @@ var chatmodder = setInterval(() => {
       }
     }
   }
-}, 500);
+}, 100);
 
 
 var mainLoad = (function() {
