@@ -234,7 +234,7 @@ var chatmodder = setInterval(() => {
     if (top.OldChat[x] != "") {
       let msg = top.OldChat[x];
       if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
-        top.OldChat[x] = `<font color='#C89468'>${top.login}</font> <font color='#FCFF11>has been smitten! ... and there was much rejoicing</font>`);
+        top.OldChat[x] = `<font color='#C89468'>${top.login}</font> <font color='#FCFF11>has been smitten! ... and there was much rejoicing</font>`;
         alert("You've been banned.");
         upchat("");
       }
