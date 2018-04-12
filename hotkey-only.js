@@ -1364,4 +1364,4 @@ function get_equipment() {
     domes(`${data[0]}: ${data[1]}`);
   });
   domes("Currently Equipped Items");
-  }
+}
