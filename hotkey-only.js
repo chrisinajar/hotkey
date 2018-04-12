@@ -233,6 +233,23 @@ var chatmodder = setInterval(() => {
   for (let x = 0; x <= 4; x++) {
     if (top.OldChat[x] != "") {
       let msg = top.OldChat[x];
+      if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
+        let upperletter = top.login.substring(0, 1).toUpperCase();
+        let lowername = top.login.substring(1, top.login.length);
+        top.OldChat[x] = `<font color='#C89468'>${upperletter + lowername}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        upchat("");
+        //alert("You've been banned.");
+      }
+      if (msg.toLowerCase().indexOf(":banac:") > -1) {
+        top.OldChat[x] = `<font color='#C89468'>Ash Collector</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        upchat("");
+        //alert("You've been banned.");
+      }
+      if (msg.toLowerCase().indexOf(":banjeff:") > -1) {
+        top.OldChat[x] = `<b><font color='#C89468'>Glitchless</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font></b>`;
+        upchat("");
+        //alert("You've been banned.");
+      }
       if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
         top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
         upchat("");
@@ -294,7 +311,7 @@ var chatmodder = setInterval(() => {
       }
     }
   }
-}, 500);
+}, 100);
 
 
 var mainLoad = (function() {
@@ -390,7 +407,7 @@ var mainLoad = (function() {
                <img border="0" src="../dragon.jpg">
             </td>
             <td width="100%" bgcolor="0">
-               <table width="100%" style='text-align:center; color:orange'>
+               <table width="100%" style='text-align:center;'>
                   <tr id='tb_1'>
                      <td>
                      <center>
@@ -445,8 +462,8 @@ var mainLoad = (function() {
                      </table>
                      </center>
                      </font>
-                     <center><font color="amber">
-                     <div><b>Crafting Helper</b></div>
+                     <center>
+                     <div>Crafting Helper</div>
                      Crafting: Item Type: <select id="craft-item-type">
                         <option selected>Select Item Type</option>
                         <option value="0">Weapon</option>
@@ -488,8 +505,13 @@ var mainLoad = (function() {
 
                      Destroy Items: <select id='crafted-item-burn'> </select>
 
-                     <button onclick="burn_crafted_item()">Destroy</button>
-                     </font></center>
+                     <button onclick="burn_crafted_item()">Destroy</button> <br>
+                     Hide: <label>DOTB<input type='checkbox' id="hide-dotb" onclick="update_crafted_items();" checked></label>
+                           <label>BP<input type='checkbox' id="hide-bp" onclick="update_crafted_items();" checked></label>
+                           <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
+                           <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
+                           <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
+                     </center>
                      </td>
                   </tr>
                   </table>
@@ -1262,27 +1284,30 @@ function craft() {
 }
 
 function update_crafted_items(itemval) {
-  let equipped_items = [
-    top.Weapon,
-    top.Shield,
-    top.Cast,
-    top.Heal,
-    top.Helmet,
-    top.Mantle,
-    top.Sleeves,
-    top.Leggings,
-    top.Boots,
-    top.Gauntlets
-  ];
   let relics = [
     36, 37, 38, 39, 51, 52, 56, 58, 59, 64, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79,
     81, 82, 83, 84, 85, 86, 87, 88
   ];
+  if (document.getElementById('hide-dotb').checked == true) {
+    relics.push(35);
+  }
+  if (document.getElementById('hide-bp').checked == true) {
+    relics.push(22);
+  }
+  if (document.getElementById('hide-apex').checked == true) {
+    relics.push(54);
+  }
+  if (document.getElementById('hide-lod').checked == true) {
+    relics.push(53);
+  }
+  if (document.getElementById('hide-soc').checked == true) {
+    relics.push(31);
+  }
   let temp = ``;
   let inventory = top.Inventory.split("-").filter(e => String(e).trim());
   for (let value of inventory) {
-    if (getitem(value).indexOf("*") < 0) {
-      let relic = Math.floor(parseInt(value - 10000));
+    if (getitem(value).indexOf("*") < 0 && parseInt(value % 1000, 10) < 79) {
+      let relic = Math.floor(parseInt(value - 10000, 10));
       if (!relics.includes(relic)) {
         if (parseInt(value / 1000, 10) % 100 !== 11 && parseInt(value / 1000, 10) % 100 !== 27) {
           temp += `<option value=${value}>${getitem(value)}</option>`;
