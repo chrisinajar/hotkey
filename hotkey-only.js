@@ -461,7 +461,7 @@ var mainLoad = (function() {
                              <option value="set1">Set 1</option>
                              <option value="set2">Set 2</option>
                              <option value="set3">Set 3</option>
-                           </select><button onclick="porter(document.getElementById('waypoints').value)">Submit</button> <button onclick="get_equipment()">List Equipment</button>
+                           </select><button onclick="porter(document.getElementById('waypoints').value)">Submit</button>
                           </td>
                         </tr>
                      </table>
@@ -517,7 +517,7 @@ var mainLoad = (function() {
                            <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
-                           </div> <button onclick='toggle_crafting();'>Hide/Show Crafting</button>
+                           </div> <button onclick='toggle_crafting();'>Hide/Show Crafting</button> <button onclick="get_equipment()">List Equipment</button>
                      </center>
                      </td>
                   </tr>
