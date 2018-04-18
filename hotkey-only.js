@@ -1,7 +1,7 @@
 'use strict'
 
 var p = {
-  version: "Version: 10 (Final)",
+  version: "Version: 11",
   pwps: [0, 0, 0, 0],
   current_inventory: [],
   current_inventory_length: 0,
@@ -463,7 +463,8 @@ var mainLoad = (function() {
                      </center>
                      </font>
                      <center>
-                     <div>Crafting Helper</div>
+
+                     <div id='crafting-helper'>Crafting Helper <br>
                      Crafting: Item Type: <select id="craft-item-type">
                         <option selected>Select Item Type</option>
                         <option value="0">Weapon</option>
@@ -511,6 +512,7 @@ var mainLoad = (function() {
                            <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
+                           </div> <button onclick='toggle_crafting();'>Hide/Show Crafting</button>
                      </center>
                      </td>
                   </tr>
@@ -814,7 +816,7 @@ function essences() {
 setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
-  domes('Keybindings Loaded ' + p.version + ' I appreciate everyone using my addon for the past 10 months. The hotkeys have been removed, and some errors have been fixed. I will not be updating this in the future unless Jeff adds the features to the game. Thank you for the kind words and support, Anubis.');
+  domes('Keybindings Loaded ' + p.version + ' Thank you for using the addon, I hope its served you well.');
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
   upbuttons();
@@ -1337,4 +1339,12 @@ function burn_crafted_item() {
   setTimeout(() => {
     update_crafted_items(item);
   }, 250);
+}
+
+function toggle_crafting(){
+  if(document.getElementById("crafting-helper").hidden == false){
+    document.getElementById("crafting-helper").hidden = true;
+  } else {
+    document.getElementById("crafting-helper").hidden = false;
+  }
 }
