@@ -250,6 +250,11 @@ var chatmodder = setInterval(() => {
         upchat("");
         //alert("You've been banned.");
       }
+      if (msg.toLowerCase().indexOf(":banpk:") > -1) {
+        top.OldChat[x] = `<font color='#C89468'>Puddle Keeper</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        upchat("");
+        //alert("You've been banned.");
+      }
       if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
         top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
         upchat("");
@@ -456,7 +461,7 @@ var mainLoad = (function() {
                              <option value="set1">Set 1</option>
                              <option value="set2">Set 2</option>
                              <option value="set3">Set 3</option>
-                           </select><button onclick="porter(document.getElementById('waypoints').value)">Submit</button>
+                           </select><button onclick="porter(document.getElementById('waypoints').value)">Submit</button> <button onclick="get_equipment()">List Equipment</button>
                           </td>
                         </tr>
                      </table>
@@ -1341,10 +1346,37 @@ function burn_crafted_item() {
   }, 250);
 }
 
-function toggle_crafting(){
-  if(document.getElementById("crafting-helper").hidden == false){
+function toggle_crafting() {
+  if (document.getElementById("crafting-helper").hidden == false) {
     document.getElementById("crafting-helper").hidden = true;
   } else {
     document.getElementById("crafting-helper").hidden = false;
   }
+}
+
+function get_equipment() {
+  let temp = [];
+  let current_inventory = {
+    "Relic 6": getitem(top.Relic6),
+    "Relic 5": getitem(top.Relic5),
+    "Relic 4": getitem(top.Relic4),
+    "Relic 3": getitem(top.Relic3),
+    "Relic 2": getitem(top.Relic2),
+    "Relic 1": getitem(top.Relic1),
+    "Right Spell": getitem(top.Heal),
+    "Feet": getitem(top.Boots),
+    "Legs": getitem(top.Leggings),
+    "Left Spell": getitem(top.Cast),
+    "Arms": getitem(top.Sleeves),
+    "Chest": getitem(top.Mantle),
+    "Hands": getitem(top.Gauntlets),
+    "Right Hand": getitem(top.Shield),
+    "Head": getitem(top.Helmet),
+    "Left Hand": getitem(top.Weapon)
+  }
+
+  Object.entries(current_inventory).forEach((data) => {
+    domes(`${data[0]}: ${data[1]}`);
+  });
+  domes("Currently Equipped Items");
 }
