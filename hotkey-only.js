@@ -464,7 +464,7 @@ var mainLoad = (function() {
                      </font>
                      <center>
 
-                     <div id='crafting-helper'>Crafting Helper <br>
+                     <div id='crafting-helper' hidden>Crafting Helper <br>
                      Crafting: Item Type: <select id="craft-item-type">
                         <option selected>Select Item Type</option>
                         <option value="0">Weapon</option>
