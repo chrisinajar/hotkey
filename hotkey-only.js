@@ -238,22 +238,23 @@ var chatmodder = setInterval(() => {
         let lowername = top.login.substring(1, top.login.length);
         top.OldChat[x] = `<font color='#C89468'>${upperletter + lowername}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
-        //alert("You've been banned.");
+      }
+      if (msg.toLowerCase().indexOf(":ban-") > -1) {
+        let username = msg.substring(msg.indexOf(':ban-') + 5, msg.lastIndexOf(':'));
+        top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        upchat("");
       }
       if (msg.toLowerCase().indexOf(":banac:") > -1) {
         top.OldChat[x] = `<font color='#C89468'>Ash Collector</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
-        //alert("You've been banned.");
       }
       if (msg.toLowerCase().indexOf(":banjeff:") > -1) {
         top.OldChat[x] = `<b><font color='#C89468'>Glitchless</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font></b>`;
         upchat("");
-        //alert("You've been banned.");
       }
       if (msg.toLowerCase().indexOf(":banpk:") > -1) {
         top.OldChat[x] = `<font color='#C89468'>Puddle Keeper</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
-        //alert("You've been banned.");
       }
       if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
         top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
