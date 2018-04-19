@@ -1,7 +1,7 @@
 'use strict'
 
 var p = {
-  version: "Version: 11",
+  version: "Version: 11.1",
   pwps: [0, 0, 0, 0],
   current_inventory: [],
   current_inventory_length: 0,
@@ -471,7 +471,7 @@ var mainLoad = (function() {
                      </font>
                      <center>
 
-                     <div id='crafting-helper' hidden>Crafting Helper <br>
+                     <div id='crafting-helper' hidden>
                      Crafting: Item Type: <select id="craft-item-type">
                         <option selected>Select Item Type</option>
                         <option value="0">Weapon</option>
@@ -1289,7 +1289,7 @@ function craft() {
   fields.general.submit();
   setTimeout(() => {
     update_crafted_items();
-  }, 250);
+  }, 200);
 }
 
 function update_crafted_items(itemval) {
@@ -1334,7 +1334,7 @@ function update_crafted_items(itemval) {
           break;
         }
       }
-    }, 250);
+    }, 200);
   }
 }
 
@@ -1345,7 +1345,7 @@ function burn_crafted_item() {
   }
   setTimeout(() => {
     update_crafted_items(item);
-  }, 250);
+  }, 150);
 }
 
 function toggle_crafting() {
