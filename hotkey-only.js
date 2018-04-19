@@ -419,6 +419,7 @@ var mainLoad = (function() {
                      <table style='text-align:center;'>
                         <tr>
                            <td>
+                           <div id="waypoint-menu" hidden>
                            Waypoints: <select id="waypoints">
                            <option value=false>-----HEAVEN-----</option>
                              <option value="palace">Forbidden Palace</option>
@@ -461,7 +462,8 @@ var mainLoad = (function() {
                              <option value="set1">Set 1</option>
                              <option value="set2">Set 2</option>
                              <option value="set3">Set 3</option>
-                           </select><button onclick="porter(document.getElementById('waypoints').value)">Submit</button>
+                           </select><button onclick="porter(document.getElementById('waypoints').value)">Teleport</button>
+                           </div><button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
                           </td>
                         </tr>
                      </table>
@@ -517,7 +519,7 @@ var mainLoad = (function() {
                            <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
-                           </div> <button onclick='toggle_crafting();'>Hide/Show Crafting</button> <button onclick="get_equipment()">List Equipment</button>
+                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <button onclick="get_equipment()">List Equipment</button>
                      </center>
                      </td>
                   </tr>
@@ -1349,8 +1351,20 @@ function burn_crafted_item() {
 function toggle_crafting() {
   if (document.getElementById("crafting-helper").hidden == false) {
     document.getElementById("crafting-helper").hidden = true;
+    document.getElementById("chb").innerHTML = "Show Crafting";
   } else {
     document.getElementById("crafting-helper").hidden = false;
+    document.getElementById("chb").innerHTML = "Hide Crafting";
+  }
+}
+
+function toggle_waypoints() {
+  if (document.getElementById("waypoint-menu").hidden == false) {
+    document.getElementById("waypoint-menu").hidden = true;
+    document.getElementById("wpb").innerHTML = "Show Waypoints";
+  } else {
+    document.getElementById("waypoint-menu").hidden = false;
+    document.getElementById("wpb").innerHTML = "Hide Waypoints";
   }
 }
 
