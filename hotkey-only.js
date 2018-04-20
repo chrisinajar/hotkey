@@ -244,6 +244,16 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
       }
+      if (msg.toLowerCase().indexOf(":ban-") > -1) {
+        let username = msg.substring(msg.indexOf(':fish-') + 5, msg.lastIndexOf(':'));
+        top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been smacked upside the head with a giant tuna fish... and there was much laughing</font>`;
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":piss-") > -1) {
+        let username = msg.substring(msg.indexOf(':piss-') + 5, msg.lastIndexOf(':'));
+        top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been drenched in a golden shower... and it was fucking gross</font>`;
+        upchat("");
+      }
       if (msg.toLowerCase().indexOf(":banac:") > -1) {
         top.OldChat[x] = `<font color='#C89468'>Ash Collector</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
