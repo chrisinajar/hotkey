@@ -244,7 +244,7 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
       }
-      if (msg.toLowerCase().indexOf(":ban-") > -1) {
+      if (msg.toLowerCase().indexOf(":fish-") > -1) {
         let username = msg.substring(msg.indexOf(':fish-') + 5, msg.lastIndexOf(':'));
         top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been smacked upside the head with a giant tuna fish... and there was much laughing</font>`;
         upchat("");
