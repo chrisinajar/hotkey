@@ -270,7 +270,7 @@ var chatmodder = setInterval(() => {
         }
         let yl = parseInt(randomValue(0, 299), 10);
         if(yl < 100){
-          xl = `0${yl}`;
+          yl = `0${yl}`;
         }
         top.OldChat[x] = `<font color='#FCFF11'>A shrill screech sounds in the distance followed by a horrendous growl...and then all is silent</font> <br>
           <font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'> has awoken a beast near ${xl},${plane},${yl}!!!</font>`;
