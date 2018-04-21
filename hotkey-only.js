@@ -244,6 +244,37 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
       }
+      if (msg.toLowerCase().indexOf(":beast-") > -1) {
+        let username = msg.substring(msg.indexOf(':beast-') + 7, msg.lastIndexOf(':'));
+        let plane = '';
+        switch (randomValue(0, 4)) {
+          case 0:
+            plane = 'Hel';
+            break;
+          case 1:
+            plane = 'Dun';
+            break;
+          case 2:
+            plane = 'Sur';
+            break;
+          case 3:
+            plane = 'Sky';
+            break;
+          case 4:
+            plane = 'Hev';
+            break;
+        }
+        let xl = randomValue(0, 299);
+        if(xl < 100){
+          xl = "0" + String(xl);
+        }
+        let yl = randomValue(0, 299);
+        if(yl < 100){
+          yl = "0" + String(yl);
+        }
+        top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'> has awoken a beast at ${xl},${plane},${yl}!</font>`;
+        upchat("");
+      }
       if (msg.toLowerCase().indexOf(":fish-") > -1) {
         let username = msg.substring(msg.indexOf(':fish-') + 6, msg.lastIndexOf(':'));
         top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been smacked upside the head with a giant tuna fish... and there was much laughing</font>`;
@@ -328,7 +359,6 @@ var chatmodder = setInterval(() => {
     }
   }
 }, 100);
-
 
 var mainLoad = (function() {
   document.getElementsByTagName('tbody')[1].innerHTML = `<tbody>
