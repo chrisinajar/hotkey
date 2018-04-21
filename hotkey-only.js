@@ -245,6 +245,10 @@ var chatmodder = setInterval(() => {
         upchat("");
       }
       if (msg.toLowerCase().indexOf(":beast-") > -1) {
+        let xl = parseInt(randomValue(0, 299), 10);
+        if(xl < 100){
+          xl = `0${xl}`;
+        }
         let username = msg.substring(msg.indexOf(':beast-') + 7, msg.lastIndexOf(':'));
         let plane = '';
         switch (randomValue(0, 4)) {
@@ -263,10 +267,6 @@ var chatmodder = setInterval(() => {
           case 4:
             plane = 'Hev';
             break;
-        }
-        let xl = parseInt(randomValue(0, 299), 10);
-        if(xl < 100){
-          xl = `0${xl}`;
         }
         let yl = parseInt(randomValue(0, 299), 10);
         if(yl < 100){
