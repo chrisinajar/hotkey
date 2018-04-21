@@ -241,7 +241,7 @@ var chatmodder = setInterval(() => {
       }
       if (msg.toLowerCase().indexOf(":ban-") > -1) {
         let username = msg.substring(msg.indexOf(':ban-') + 5, msg.lastIndexOf(':'));
-        top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
       }
       if (msg.toLowerCase().indexOf(":beast-") > -1) {
@@ -264,25 +264,27 @@ var chatmodder = setInterval(() => {
             plane = 'Hev';
             break;
         }
-        let xl = randomValue(0, 299);
+        let xl = parseInt(randomValue(0, 299), 10);
         if(xl < 100){
-          xl = "0" + String(xl);
+          xl = `0${xl}`;
         }
-        let yl = randomValue(0, 299);
+        let yl = parseInt(randomValue(0, 299), 10);
         if(yl < 100){
-          yl = "0" + String(yl);
+          xl = `0${yl}`;
         }
-        top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'> has awoken a beast at ${xl},${plane},${yl}!</font>`;
+        top.OldChat[x] = `<font color='#FCFF11'>A shrill screech sounds in the distance followed by a horrendous growl...and then all is silent</font> <br>
+          <font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'> has awoken a beast near ${xl},${plane},${yl}!!!</font>`;
         upchat("");
       }
       if (msg.toLowerCase().indexOf(":fish-") > -1) {
         let username = msg.substring(msg.indexOf(':fish-') + 6, msg.lastIndexOf(':'));
-        top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been smacked upside the head with a giant tuna fish... and there was much laughing</font>`;
+
+        top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smacked upside the head with a giant tuna fish... and there was much laughing</font>`;
         upchat("");
       }
       if (msg.toLowerCase().indexOf(":piss-") > -1) {
         let username = msg.substring(msg.indexOf(':piss-') + 6, msg.lastIndexOf(':'));
-        top.OldChat[x] = `<font color='#C89468'>${username}</font> <font color='#FCFF11'>has been drenched in a golden shower... and it was fucking gross</font>`;
+        top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been drenched in a golden shower... and it was fucking gross</font>`;
         upchat("");
       }
       if (msg.toLowerCase().indexOf(":banac:") > -1) {
